@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projeto;
+package view;
 
 import java.awt.CardLayout;
 
@@ -55,16 +55,16 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         jPCadastrarLayout.setHorizontalGroup(
             jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCadastrarLayout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(200, 200, 200)
                 .addComponent(jLabel2)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
         jPCadastrarLayout.setVerticalGroup(
             jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCadastrarLayout.createSequentialGroup()
-                .addContainerGap(177, Short.MAX_VALUE)
+            .addGroup(jPCadastrarLayout.createSequentialGroup()
+                .addGap(149, 149, 149)
                 .addComponent(jLabel2)
-                .addGap(177, 177, 177))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         jPanelPrincipal.add(jPCadastrar, "cadastrar");
@@ -187,7 +187,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

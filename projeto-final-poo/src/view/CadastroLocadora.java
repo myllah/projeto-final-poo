@@ -3,22 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projeto;
+package view;
 
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 /**
  *
  * @author myllah
  */
-public class CadastroCliente extends javax.swing.JFrame {
+public class CadastroLocadora extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginCliente
      */
-    public CadastroCliente() {
+    public CadastroLocadora() {
         initComponents();
     }
 
@@ -70,8 +74,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame1.setTitle("Olá Cliente");
@@ -266,7 +269,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro de Cliente");
+        setTitle("Cadastro de Locadora");
         setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(184, 69, 55));
@@ -280,9 +283,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(192, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel20)
-                .addGap(160, 160, 160))
+                .addGap(162, 162, 162))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +318,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         });
 
         jLCpf.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
-        jLCpf.setText("CPF");
+        jLCpf.setText("CNPJ");
 
         jLTelefone.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLTelefone.setText("Telefone");
@@ -371,13 +374,11 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passwordActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Cliente terá endereço??");
 
         jLayeredPane2.setLayer(email3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(JLEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -397,8 +398,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLayeredPane2.setLayer(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jTextField5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(jPasswordField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(password, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
@@ -407,21 +407,20 @@ public class CadastroCliente extends javax.swing.JFrame {
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(109, 109, 109)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
+                        .addGap(304, 304, 304)
                         .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(180, Short.MAX_VALUE))
                     .addGroup(jLayeredPane2Layout.createSequentialGroup()
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLNome)
                             .addComponent(JLEmail)
                             .addComponent(jLCpf))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
-                            .addComponent(jTFEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(email3, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                            .addComponent(jTFEmail)
+                            .addComponent(email3)))
                     .addGroup(jLayeredPane2Layout.createSequentialGroup()
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLTelefone)
@@ -430,7 +429,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                             .addComponent(jLSenha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(email8)
                             .addGroup(jLayeredPane2Layout.createSequentialGroup()
                                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -438,8 +437,8 @@ public class CadastroCliente extends javax.swing.JFrame {
                                     .addComponent(jTextField3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLBairro)
-                                    .addComponent(jLEstado))
+                                    .addComponent(jLEstado)
+                                    .addComponent(jLBairro))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField5)
@@ -482,13 +481,11 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addComponent(email8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                .addComponent(jButton1)
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -499,7 +496,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE))
+                    .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -536,7 +533,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_email3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+            validarSenha();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTFEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFEmailActionPerformed
@@ -563,9 +560,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -587,21 +584,23 @@ public class CadastroCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroLocadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroLocadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroLocadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroLocadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroCliente().setVisible(true);
+                new CadastroLocadora().setVisible(true);
             }
         });
     }
@@ -623,7 +622,6 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLRua;
     private javax.swing.JLabel jLSenha;
     private javax.swing.JLabel jLTelefone;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -640,13 +638,22 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTFEmail;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField nome2;
+    private javax.swing.JPasswordField password;
     private javax.swing.JTextField telefone1;
     // End of variables declaration//GEN-END:variables
+
+    
+    // Este método valida se a senha informada na tela é valida.
+    private void validarSenha() {
+        String pass = new String(password.getPassword());
+        if (pass.length() < 6 || pass.length() > 12) {
+        JOptionPane.showMessageDialog(null, "A senha deve ter entre 6 e 12 caracteres." , "Senha inválida", HEIGHT);
+        }
+    }
 }
