@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import java.awt.CardLayout;
 
-/**
- *
- * @author myllah
- */
 public class Inicial extends javax.swing.JFrame {
 
     /**
@@ -623,8 +615,8 @@ public class Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_senhaClienteActionPerformed
 
     private void jBCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarClienteActionPerformed
-       new CadastroCliente().setVisible(true);
-       dispose(); //fechar
+       new CadastroCliente().setVisible(true);      
+       this.dispose(); 
     }//GEN-LAST:event_jBCadastrarClienteActionPerformed
 
     private void emailLocadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailLocadoraActionPerformed
@@ -636,7 +628,8 @@ public class Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_senhaLocadoraActionPerformed
 
     private void jBCadastrarLocadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarLocadoraActionPerformed
-        // TODO add your handling code here:
+        new CadastroLocadora().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jBCadastrarLocadoraActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -734,4 +727,5 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JPasswordField senhaCliente;
     private javax.swing.JPasswordField senhaLocadora;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -20,8 +20,4 @@ abstract class Veiculo {
     private boolean airBag;
     private boolean cambioAutomatico;
     
-    
-    
-    
-        
 }
