@@ -1,7 +1,12 @@
 
 package view;
 
+import classes.Cliente;
+import classes.Endereco;
+import classes.Locadora;
 import java.awt.CardLayout;
+import validacao.ValidaCliente;
+import validacao.ValidaLocadora;
 
 public class Inicial extends javax.swing.JFrame {
 
@@ -233,18 +238,13 @@ public class Inicial extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(19, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7))
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel8)))
                 .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -327,6 +327,11 @@ public class Inicial extends javax.swing.JFrame {
 
         jBEntrarCliente.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
         jBEntrarCliente.setText("Entrar");
+        jBEntrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEntrarClienteActionPerformed(evt);
+            }
+        });
 
         jBCadastrarCliente.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
         jBCadastrarCliente.setText("Cadastrar");
@@ -525,6 +530,11 @@ public class Inicial extends javax.swing.JFrame {
 
         jBEntrarLocadora.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
         jBEntrarLocadora.setText("Entrar");
+        jBEntrarLocadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEntrarLocadoraActionPerformed(evt);
+            }
+        });
 
         jBCadastrarLocadora.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
         jBCadastrarLocadora.setText("Cadastrar");
@@ -642,6 +652,20 @@ public class Inicial extends javax.swing.JFrame {
         cl.show(login, "loginCliente");
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jBEntrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarClienteActionPerformed
+         if(testarCliente()){
+            this.dispose();
+          //  new PrincipalCliente().setVisible(true);
+        }
+    }//GEN-LAST:event_jBEntrarClienteActionPerformed
+
+    private void jBEntrarLocadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarLocadoraActionPerformed
+         if(testarLocadora()){
+            this.dispose();
+            new PrincipalLocadora().setVisible(true);
+        }
+    }//GEN-LAST:event_jBEntrarLocadoraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -728,4 +752,37 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JPasswordField senhaLocadora;
     // End of variables declaration//GEN-END:variables
 
+    
+     public boolean testarCliente(){
+        
+        Cliente c = new Cliente();
+
+        c.setEmail(emailCliente.getText());
+        c.setSenha(senhaCliente.getPassword());
+       
+        ValidaCliente vc = new ValidaCliente();
+        if(vc.validaLogin(c)){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+     
+      public boolean testarLocadora(){
+        
+        Locadora l = new Locadora();
+
+        l.setEmail(emailLocadora.getText());
+        l.setSenha(senhaLocadora.getPassword());
+       
+        ValidaLocadora vl = new ValidaLocadora();
+        if(vl.validaLogin(l)){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    
 }

@@ -5,6 +5,38 @@ import java.util.InputMismatchException;
 
 public class ValidaL {
     
+    public static boolean estadoVazio(String estado){
+        if(estado.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public static boolean cidadeVazia(String cidade){
+        if(cidade.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public static boolean bairroVazio(String bairro){
+        if(bairro.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public static boolean cnpjVazio(String cnpj){
+        if(cnpj.equals("  .   .   .    -  ") == true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
   public static boolean validaCnpj(String CNPJ) {
       
     if (CNPJ.equals("00000000000000") || CNPJ.equals("11111111111111") ||
@@ -57,10 +89,10 @@ public class ValidaL {
       else dig14 = (char)((11-r) + 48);
  
 // Verifica se os dígitos calculados conferem com os dígitos informados.
-      if ((dig13 == CNPJ.charAt(12)) && (dig14 == CNPJ.charAt(13))) return(true);
-      else return(false);
+      if ((dig13 == CNPJ.charAt(12)) && (dig14 == CNPJ.charAt(13))) return(false);
+      else return(true);
     } catch (InputMismatchException erro) {
-        return(false);
+        return(true);
     }
   }
 }

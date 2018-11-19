@@ -18,7 +18,7 @@ public class Locadora extends Everyone{
         this.cnpj = cnpj;
     }
     
-    public Endereco GetEndereco(){
+    public Endereco getEndereco(){
         return endereco;
     }
     
@@ -26,7 +26,7 @@ public class Locadora extends Everyone{
         this.endereco = endereco;
     }
     
-    public String GetSite(){
+    public String getSite(){
         return site;
     }
     

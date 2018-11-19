@@ -277,9 +277,9 @@ public class CadastroCliente extends javax.swing.JFrame {
                
         ValidaCliente vc = new ValidaCliente();
         if(vc.validaCadastro(c)){
-            return true;
-        }else{
             return false;
+        }else{
+            return true;
         }
 
     }

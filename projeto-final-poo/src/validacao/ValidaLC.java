@@ -2,33 +2,34 @@
 package validacao;
 
 public class ValidaLC{
-     public static boolean ValidaSenha(char[] senha) {
-       if(senha.length < 6 || senha.length > 12){
-           return false;
-       }else{
-           return true;
-       }
-    }
-     public static boolean ValidaNome(String nome) {
+    
+
+     public static boolean nomeVazio(String nome) {
        if(nome.isEmpty()){
-           return false;
-       }else{
            return true;
+       }else{
+           return false;
        }
     }
-     //n dá certo, acho q por causa da máscara
-//     public static boolean ValidaTelefone(String telefone) {
-//       if(telefone.isEmpty()){
-//           return false;
-//       }else{
-//           return true;
-//       }
-//    }
-      public static boolean ValidaEmail(String email) {
-       if(email.isEmpty()){
-           return false;
-       }else{
+     public static boolean telefoneVazio(String telefone) {
+       if(telefone.equals("(  )       -    ")){
            return true;
+       }else{
+           return false;
+       }
+    }
+      public static boolean emailVazio(String email) {
+       if(email.isEmpty()){
+           return true;
+       }else{
+           return false;
+       }
+    }
+       public static boolean validaSenha(char[] senha) {
+       if(senha.length < 6 || senha.length > 12){
+           return true;
+       }else{
+           return false;
        }
     }
 }
