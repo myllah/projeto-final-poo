@@ -16,6 +16,7 @@ public class ValidaLC{
            return true;
        }
     }
+     //n dá certo, acho q por causa da máscara
 //     public static boolean ValidaTelefone(String telefone) {
 //       if(telefone.isEmpty()){
 //           return false;

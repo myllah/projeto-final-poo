@@ -80,12 +80,6 @@ public class CadastroLocadora extends javax.swing.JFrame {
         jLNome.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLNome.setText("Nome");
 
-        nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeActionPerformed(evt);
-            }
-        });
-
         jLEmail.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLEmail.setText("E-mail");
 
@@ -97,11 +91,6 @@ public class CadastroLocadora extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        cnpj.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnpjActionPerformed(evt);
-            }
-        });
 
         jLTelefone.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLTelefone.setText("Telefone");
@@ -115,20 +104,8 @@ public class CadastroLocadora extends javax.swing.JFrame {
         jLEstado.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLEstado.setText("Estado");
 
-        estado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                estadoActionPerformed(evt);
-            }
-        });
-
         jLCidade.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLCidade.setText("Cidade");
-
-        cidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cidadeActionPerformed(evt);
-            }
-        });
 
         jLBairro.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLBairro.setText("Bairro");
@@ -136,20 +113,8 @@ public class CadastroLocadora extends javax.swing.JFrame {
         jLRua.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLRua.setText("Rua");
 
-        rua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ruaActionPerformed(evt);
-            }
-        });
-
         jLSenha.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLSenha.setText("Senha");
-
-        senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaActionPerformed(evt);
-            }
-        });
 
         cadastrar.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
         cadastrar.setText("Cadastrar");
@@ -288,37 +253,13 @@ public class CadastroLocadora extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomeActionPerformed
-
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         
-        if(teste()){
+        if(testar()){
             this.dispose();
             new PrincipalLocadora().setVisible(true);
         }
     }//GEN-LAST:event_cadastrarActionPerformed
-
-    private void ruaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ruaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ruaActionPerformed
-
-    private void cidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cidadeActionPerformed
-
-    private void estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_estadoActionPerformed
-
-    private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaActionPerformed
-
-    private void cnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpjActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cnpjActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,7 +327,7 @@ public class CadastroLocadora extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField telefone;
     // End of variables declaration//GEN-END:variables
    
-    public boolean teste(){
+    public boolean testar(){
         
         Locadora l = new Locadora();
 

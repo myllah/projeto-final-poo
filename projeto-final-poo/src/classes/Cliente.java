@@ -1,13 +1,17 @@
 package classes;
 
-public class Cliente {
+public class Cliente extends Everyone{
 
-    private int id;
-    private String nome;
-    private String senha;
-    private String telefone;
-    private String email;
     private String cpf;
-    private Endereco endereco; //cliente terá endereço??
+    
+    public Cliente(){}
+    
+    public void setCpf(String cpf){
+        this.cpf = cpf;
+    }
+    
+    public String getCpf(){
+        return cpf;
+    }
 	
 }

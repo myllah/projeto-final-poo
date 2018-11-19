@@ -1,57 +1,14 @@
 
 package classes;
 
-public class Locadora {
+public class Locadora extends Everyone{
     
-    private int id;
-    private String nome;
-    private char[] senha;
-    private String telefone;
-    private String email;
     private String cnpj;
     private Endereco endereco;
-    private String website;
+    private String site;
     private Veiculo[] veiculos;
     
-    public int getId(){
-        return id;
-    }
-    
-    public void setId(int id){
-        this.id = id;
-    }
-    
-     public String getNome(){
-        return nome;
-    }
-    
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    
-    public char[] getSenha(){
-        return senha;
-    }
-
-    public void setSenha(char[] a) {
-        this.senha = a;
-    }
-    
-    public String getTelefone(){
-        return telefone;
-    }
-    
-    public void setTelefone(String telefone){
-        this.telefone = telefone;
-    }
-    
-    public String getEmail(){
-        return email;
-    }
-    
-    public void setEmail(String email){
-        this.email = email;
-    }
+    public Locadora(){}
     
     public String getCnpj(){
         return cnpj;
@@ -61,8 +18,19 @@ public class Locadora {
         this.cnpj = cnpj;
     }
     
+    public Endereco GetEndereco(){
+        return endereco;
+    }
+    
+    public void setEndereco(Endereco endereco){
+        this.endereco = endereco;
+    }
+    
+    public String GetSite(){
+        return site;
+    }
+    
+    public void setSite(String site){
+        this.site = site;
+    }
 }
-
-//    private Endereco endereco;
-//    private String website;
-//    private Veiculo[] veiculos;

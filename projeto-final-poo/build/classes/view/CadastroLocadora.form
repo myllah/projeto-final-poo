@@ -213,9 +213,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nome">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLEmail">
           <Properties>
@@ -241,9 +238,6 @@
               <Format format="##.###.###.####-##" subtype="-1" type="5"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cnpjActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLTelefone">
           <Properties>
@@ -269,9 +263,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="estado">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="estadoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLCidade">
           <Properties>
@@ -282,9 +273,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="cidade">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cidadeActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLBairro">
           <Properties>
@@ -305,9 +293,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="rua">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ruaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLSenha">
           <Properties>
@@ -318,9 +303,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="senha">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="senhaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="cadastrar">
           <Properties>
