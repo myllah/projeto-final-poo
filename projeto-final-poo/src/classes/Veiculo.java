@@ -4,20 +4,88 @@ package classes;
 abstract class Veiculo {
     
     private int id;
-    private String placa;
     private String marca;
     private String modelo;
     private int ano;
-    private double preco;
+    private double precoDia;
     private String cor;
     private String combustivel;
-    private String categoria;
-    private long qtdKmRodados;
-    private String maisDescricao;
-    
-    private boolean arCondicionado;
-    private boolean direcaoHidraulica;
-    private boolean airBag;
-    private boolean cambioAutomatico;
-    
-}
+    private String motor;
+    private String placa;
+
+    public Veiculo() {
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public String getCombustivel() {
+        return combustivel;
+    }
+
+    public void setCombustivel(String combustivel) {
+        this.combustivel = combustivel;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getMotor() {
+        return motor;
+    }
+
+    public void setMotor(String motor) {
+        this.motor = motor;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public double getPrecoDia() {
+        return precoDia;
+    }
+
+    public void setPrecoDia(double precoDia) {
+        this.precoDia = precoDia;
+    }
+ 
+}    
