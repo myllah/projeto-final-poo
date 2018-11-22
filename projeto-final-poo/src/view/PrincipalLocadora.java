@@ -5,12 +5,17 @@
  */
 package view;
 
+import classes.Carro;
+import classes.Endereco;
+import classes.Locadora;
+import connection.LocadoraDAO;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import validacao.ValidaLocadora;
 
 /**
  *
@@ -505,7 +510,10 @@ public class PrincipalLocadora extends javax.swing.JFrame {
                     
             };
           
-            a.addRow(dados);      
+            a.addRow(dados); 
+            
+             testar();
+                
           limpar();
        
     }//GEN-LAST:event_cadastrarActionPerformed
@@ -668,6 +676,22 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         jTFPreco.setText(null);
         jTFPlaca.setText(null);
 
+    }
+    
+      public void testar(){
+        
+        Carro c = new Carro();
+        
+        c.setMarca(jTFMarca.getText());
+        c.setPlaca(jTFPlaca.getText());
+        c.setModelo(jTFModelo.getText());
+        c.setAno(Integer.parseInt(jTFAno.getText()));
+        c.setPrecoDia(Double.parseDouble(jTFPreco.getText()));
+        c.setMotor((String) jCBMotor.getSelectedItem());
+        c.setCombustivel(jTFCombustivel.getText());
+        c.setCor(jTFCor.getText());
+       
+            
     }
 
 }

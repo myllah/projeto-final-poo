@@ -3,6 +3,7 @@ package view;
 
 import classes.Endereco;
 import classes.Locadora;
+import connection.LocadoraDAO;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -255,9 +256,12 @@ public class CadastroLocadora extends javax.swing.JFrame {
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         
         if(testar()){
+          
             this.dispose();
             new PrincipalLocadora().setVisible(true);
         }
+    
+
     }//GEN-LAST:event_cadastrarActionPerformed
 
     /**
@@ -342,11 +346,16 @@ public class CadastroLocadora extends javax.swing.JFrame {
         l.setSenha(senha.getPassword());
        
         ValidaLocadora vl = new ValidaLocadora();
-        if(vl.validaCadastro(l)){
+        
+        LocadoraDAO ldao = new LocadoraDAO();
+            
+        if(vl.validaCadastro(l)){      
             return false;
         }else{
+             ldao.create(l);
             return true;
         }
 
+            
     }
 }

@@ -5,7 +5,6 @@ public class Locadora extends Everyone{
     
     private String cnpj;
     private Endereco endereco;
-    //private String site;
     private Veiculo[] veiculos;
     
     public Locadora(){}
@@ -26,11 +25,4 @@ public class Locadora extends Everyone{
         this.endereco = endereco;
     }
     
-//    public String getSite(){
-//        return site;
-//    }
-//    
-//    public void setSite(String site){
-//        this.site = site;
-//    }
 }
