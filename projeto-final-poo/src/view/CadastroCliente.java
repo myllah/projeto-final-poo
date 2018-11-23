@@ -273,7 +273,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         c.setEmail(email.getText());
         c.setCpf(cpf.getText());
         c.setTelefone(telefone.getText());
-        c.setSenha(senha.getPassword());
+        c.setSenha( String.valueOf(senha.getPassword()));
                
         ValidaCliente vc = new ValidaCliente();
         if(vc.validaCadastro(c)){

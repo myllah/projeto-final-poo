@@ -5,7 +5,7 @@ public abstract class Everyone {
     
     private int id;
     private String nome;
-    private char[] senha;
+    private String senha;
     private String telefone;
     private String email;
     
@@ -21,11 +21,11 @@ public abstract class Everyone {
         this.nome = nome;
     }
     
-    public char[] getSenha(){
+    public String getSenha(){
         return senha;
     }
 
-    public void setSenha(char[] senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
     

@@ -761,7 +761,7 @@ public class Inicial extends javax.swing.JFrame {
         Cliente c = new Cliente();
 
         c.setEmail(emailCliente.getText());
-        c.setSenha(senhaCliente.getPassword());
+        c.setSenha( String.valueOf(senhaCliente.getPassword()));
        
         ValidaCliente vc = new ValidaCliente();
         if(vc.validaLogin(c)){
@@ -777,7 +777,7 @@ public class Inicial extends javax.swing.JFrame {
         Locadora l = new Locadora();
 
         l.setEmail(emailLocadora.getText());
-        l.setSenha(senhaLocadora.getPassword());
+        l.setSenha( String.valueOf(senhaLocadora.getPassword()));
        
         ValidaLocadora vl = new ValidaLocadora();
         if(vl.validaLogin(l)){

@@ -342,9 +342,8 @@ public class CadastroLocadora extends javax.swing.JFrame {
         e.setCidade(cidade.getText());
         e.setBairro(bairro.getText());
         l.setEndereco(e);
+        l.setSenha( String.valueOf(senha.getPassword()));
 
-        l.setSenha(senha.getPassword());
-       
         ValidaLocadora vl = new ValidaLocadora();
         
         LocadoraDAO ldao = new LocadoraDAO();

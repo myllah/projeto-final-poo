@@ -25,8 +25,8 @@ public class ValidaLC{
            return false;
        }
     }
-       public static boolean validaSenha(char[] senha) {
-       if(senha.length < 6 || senha.length > 12){
+       public static boolean validaSenha(String senha) {
+       if(senha.length() < 6 || senha.length() > 12){
            return true;
        }else{
            return false;

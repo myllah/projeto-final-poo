@@ -25,15 +25,22 @@ public class LocadoraDAO {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("INSERT INTO locadora (nome,telefone,email,cnpj) VALUES(?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO everyone (nome,senha,telefone,email) VALUES(?,?,?,?)");
         
             stmt.setString(1, l.getNome());
-          //  stmt.setString(1, l.getSenha());
-            stmt.setString(2, l.getTelefone());
-            stmt.setString(3, l.getEmail());
-            stmt.setString(4, l.getCnpj());
+            stmt.setString(2, l.getSenha());
+            stmt.setString(3, l.getTelefone());
+            stmt.setString(4, l.getEmail());
             
             stmt.executeUpdate();
+            
+            stmt = con.prepareStatement("INSERT INTO locadora (cnpj) VALUES(?)");
+        
+            stmt.setString(1, l.getCnpj());
+            
+            stmt.executeUpdate();
+            
+            
             JOptionPane.showMessageDialog(null, "salvo cm sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "erro ao salvar: "+ex);
