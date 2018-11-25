@@ -1,9 +1,10 @@
 
 package classes;
 
-abstract class Veiculo {
+public class Veiculo {
     
     private int id;
+    private String veiculo;
     private String marca;
     private String modelo;
     private int ano;
@@ -86,6 +87,14 @@ abstract class Veiculo {
 
     public void setPrecoDia(double precoDia) {
         this.precoDia = precoDia;
+    }
+
+    public String getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(String veiculo) {
+        this.veiculo = veiculo;
     }
  
 }    

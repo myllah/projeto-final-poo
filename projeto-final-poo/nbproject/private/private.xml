@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/myllah/workspace/projeto-final-poo/projeto-final-poo/src/view/Inicial.java</file>
-            <file>file:/home/myllah/workspace/projeto-final-poo/projeto-final-poo/src/classes/Locadora.java</file>
-            <file>file:/home/myllah/workspace/projeto-final-poo/projeto-final-poo/src/view/CadastroLocadora.java</file>
-            <file>file:/home/myllah/workspace/projeto-final-poo/projeto-final-poo/src/connection/LocadoraDAO.java</file>
+            <file>file:/home/myllah/workspace/projeto-final-poo/projeto-final-poo/src/connection/VeiculoDAO.java</file>
+            <file>file:/home/myllah/workspace/projeto-final-poo/projeto-final-poo/src/view/PrincipalLocadora.java</file>
         </group>
     </open-files>
 </project-private>
