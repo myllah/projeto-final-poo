@@ -1,22 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package connection;
 
 import classes.Locadora;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author myllah
- */
 public class LocadoraDAO {
     
     public void create(Locadora l){
@@ -26,18 +16,20 @@ public class LocadoraDAO {
         
         try {
             stmt = con.prepareStatement("INSERT INTO everyone (nome,senha,telefone,email) VALUES(?,?,?,?)");
-        
             stmt.setString(1, l.getNome());
             stmt.setString(2, l.getSenha());
             stmt.setString(3, l.getTelefone());
             stmt.setString(4, l.getEmail());
-            
             stmt.executeUpdate();
             
             stmt = con.prepareStatement("INSERT INTO locadora (cnpj) VALUES(?)");
-        
             stmt.setString(1, l.getCnpj());
+            stmt.executeUpdate();
             
+            stmt = con.prepareStatement("INSERT INTO endereco (cidade,estado,bairro) VALUES(?,?,?)");
+            stmt.setString(1, l.getEndereco().getCidade());
+            stmt.setString(2, l.getEndereco().getEstado());
+            stmt.setString(3, l.getEndereco().getBairro());
             stmt.executeUpdate();
             
             
