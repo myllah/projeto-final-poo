@@ -2,7 +2,6 @@
 package validacao;
 
 import classes.Cliente;
-import classes.Locadora;
 import javax.swing.JOptionPane;
 
 public class ValidaCliente {
@@ -10,10 +9,10 @@ public class ValidaCliente {
     public boolean validaCadastro(Cliente c) {
 
         boolean resposta = false;
-        String txt = "txt";
+        String txt = null;
         
        if(ValidaLC.nomeVazio(c.getNome()) == true){
-           if(txt.equals("txt")){
+           if(txt == null){
                txt = "\nNome vazio";
            }else{
                txt = txt + "\nNome vazio";
@@ -21,7 +20,7 @@ public class ValidaCliente {
            resposta = true;
        }
        if(ValidaLC.emailVazio(c.getEmail()) == true){
-           if(txt.equals("txt")){
+           if(txt == null){
                txt = "\nEmail vazio";
            }else{
                txt = txt + "\nEmail vazio";
@@ -29,14 +28,14 @@ public class ValidaCliente {
            resposta = true;
        }
        if(ValidaC.cpfVazio(c.getCpf()) == true){
-            if(txt.equals("txt")){
+            if(txt == null){
                txt = "\nCPF vazio";
            }else{
                txt = txt + "\nCPF vazio";
            }
            resposta = true;
        }else if(ValidaC.validaCpf(c.getCpf()) == true){
-           if(txt.equals("txt")){
+           if(txt == null){
                txt = "\nCPF incorreto";
            }else{
                txt = txt + "\nCPF incorreto";
@@ -44,7 +43,7 @@ public class ValidaCliente {
            resposta = true;
        }
         if(ValidaLC.telefoneVazio(c.getTelefone())== true){
-            if(txt.equals("txt")){
+            if(txt == null){
                txt = "\nTelefone vazio";
            }else{
                txt = txt + "\nTelefone vazio";
@@ -52,7 +51,7 @@ public class ValidaCliente {
            resposta = true;
        }
         if(ValidaLC.validaSenha(c.getSenha()) == true){
-            if(txt.equals("txt")){
+            if(txt == null){
                txt = "\nSenha incorreta";
            }else{
                txt = txt + "\nSenha incorreta";
@@ -60,21 +59,20 @@ public class ValidaCliente {
            resposta = true;
        }
         
-        if(txt.equals("txt")){
-            txt = "Seja bem vindo!!";
+        if(txt != null){
+            JOptionPane.showMessageDialog(null, txt);
         }
         
-        JOptionPane.showMessageDialog(null, txt);
         return resposta;
     }   
     
     public boolean validaLogin(Cliente c) {
 
         boolean resposta = false;
-        String txt = "txt";
+        String txt = null;
         
        if(ValidaLC.emailVazio(c.getEmail())== true){
-           if(txt.equals("txt")){
+           if(txt == null){
                txt = "\nEmail vazio";
            }else{
                txt = txt + "\nEmail vazio";
@@ -82,7 +80,7 @@ public class ValidaCliente {
            resposta = true;
        }
        if(ValidaLC.validaSenha(c.getSenha()) == true){
-           if(txt.equals("txt")){
+            if(txt == null){
                txt = "\nA Senha deve ter entre 6 e 12 caracteres";
            }else{
                txt = txt + "\nA Senha deve ter entre 6 e 12 caracteres";
@@ -90,11 +88,10 @@ public class ValidaCliente {
            resposta = true;
        }
        
-       if(txt.equals("txt")){
-            txt = "Olá novamente!!";
+        if(txt != null){
+            JOptionPane.showMessageDialog(null, txt);
         }
        
-        JOptionPane.showMessageDialog(null, txt);
         return resposta;
     }   
 }

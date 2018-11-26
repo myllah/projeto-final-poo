@@ -13,5 +13,13 @@ public class Cliente extends Everyone{
     public String getCpf(){
         return cpf;
     }
-	
+
+    @Override
+    public String toString() {
+        String s = "nome" + this.getNome();
+        
+        return s;
+    }
+
+    
 }

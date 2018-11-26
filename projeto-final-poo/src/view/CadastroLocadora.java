@@ -4,12 +4,6 @@ package view;
 import classes.Endereco;
 import classes.Locadora;
 import connection.LocadoraDAO;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import validacao.ValidaLocadora;
 
 public class CadastroLocadora extends javax.swing.JFrame {
@@ -255,10 +249,8 @@ public class CadastroLocadora extends javax.swing.JFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         
-        if(testar()){
-          
+       if(testar()){
             this.dispose();
-            new PrincipalLocadora().setVisible(true);
         }
     
 

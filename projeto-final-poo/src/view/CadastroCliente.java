@@ -2,15 +2,9 @@
 package view;
 
 import classes.Cliente;
-import classes.Locadora;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import connection.ClienteDAO;
 import validacao.ValidaCliente;
-import validacao.ValidaLocadora;
+
 
 public class CadastroCliente extends javax.swing.JFrame {
 
@@ -199,7 +193,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         
         if(testar()){
             this.dispose();
-          //  new PrincipalLocadora().setVisible(true);
         }
     }//GEN-LAST:event_cadastrarActionPerformed
 
@@ -276,9 +269,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         c.setSenha( String.valueOf(senha.getPassword()));
                
         ValidaCliente vc = new ValidaCliente();
+        ClienteDAO cdao = new ClienteDAO();
+        
         if(vc.validaCadastro(c)){
             return false;
         }else{
+            cdao.create(c);
             return true;
         }
 
