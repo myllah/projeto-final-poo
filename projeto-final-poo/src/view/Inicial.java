@@ -2,9 +2,11 @@
 package view;
 
 import classes.Cliente;
-import classes.Endereco;
 import classes.Locadora;
+import connection.ClienteDAO;
+import connection.LocadoraDAO;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import validacao.ValidaCliente;
 import validacao.ValidaLocadora;
 
@@ -638,7 +640,6 @@ public class Inicial extends javax.swing.JFrame {
 
     private void jBCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarClienteActionPerformed
        new CadastroCliente().setVisible(true);      
-       this.dispose(); 
     }//GEN-LAST:event_jBCadastrarClienteActionPerformed
 
     private void emailLocadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailLocadoraActionPerformed
@@ -651,7 +652,6 @@ public class Inicial extends javax.swing.JFrame {
 
     private void jBCadastrarLocadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarLocadoraActionPerformed
         new CadastroLocadora().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jBCadastrarLocadoraActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -665,16 +665,31 @@ public class Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jBEntrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarClienteActionPerformed
-         if(testarCliente()){
-            this.dispose();
-          //  new PrincipalCliente().setVisible(true);
+          ClienteDAO cdao = new ClienteDAO();
+        
+        if(testarCliente()){
+            if(cdao.checkLogin(emailCliente.getText(), senhaCliente.getText())){
+                Cliente c = cdao.getLogin(emailCliente.getText(), senhaCliente.getText());
+                this.dispose();
+                new PrincipalCliente(c).setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Seus dados estão incorretos");
+            }
         }
     }//GEN-LAST:event_jBEntrarClienteActionPerformed
 
     private void jBEntrarLocadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarLocadoraActionPerformed
-         if(testarLocadora()){
-            this.dispose();
-            new PrincipalLocadora().setVisible(true);
+        
+        LocadoraDAO ldao = new LocadoraDAO();
+        
+        if(testarLocadora()){
+            if(ldao.checklogin(emailLocadora.getText(), senhaLocadora.getText())){
+                 Locadora l = ldao.getLogin(emailLocadora.getText(), senhaLocadora.getText());
+                this.dispose();
+                new PrincipalLocadora(l).setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Seus dados estão incorretos");
+            }
         }
     }//GEN-LAST:event_jBEntrarLocadoraActionPerformed
 

@@ -8,11 +8,7 @@ public abstract class Everyone {
     private String senha;
     private String telefone;
     private String email;
-    
-    public int getId(){
-        return id;
-    }
-    
+
      public String getNome(){
         return nome;
     }
@@ -44,5 +40,15 @@ public abstract class Everyone {
     public void setEmail(String email){
         this.email = email;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
     
 }
