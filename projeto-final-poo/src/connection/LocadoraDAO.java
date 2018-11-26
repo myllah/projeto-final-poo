@@ -1,7 +1,5 @@
 
 package connection;
-
-import classes.Endereco;
 import classes.Locadora;
 import classes.Veiculo;
 import java.sql.Connection;
@@ -30,13 +28,7 @@ public class LocadoraDAO {
             stmt.setString(3, l.getTelefone());
             stmt.setString(4, l.getEmail());
             stmt.executeUpdate();
-            
-            stmt = con.prepareStatement("INSERT INTO endereco (cidade,estado,bairro) VALUES(?,?,?)");
-            stmt.setString(1, l.getEndereco().getCidade());
-            stmt.setString(2, l.getEndereco().getEstado());
-            stmt.setString(3, l.getEndereco().getBairro());
-            stmt.executeUpdate();
-            
+
             
             JOptionPane.showMessageDialog(null, "salvo cm sucesso");
         } catch (SQLException ex) {
@@ -251,12 +243,6 @@ public class LocadoraDAO {
                 l.setTelefone(rs.getString("telefone"));
                 l.setSenha(rs.getString("senha"));
                 
-                
-  
-//        e.setEstado(estadoPerfilLocadora.getText());
-//        e.setCidade(cidadePerfilLocadora.getText());
-//        e.setBairro(bairroPerfilLocadora.getText());
-//        l.setEndereco(e);
       
             }
 
@@ -320,17 +306,6 @@ public class LocadoraDAO {
             
             stmt.executeUpdate();
  
-          
-            stmt = con.prepareStatement("UPDATE endereco "
-                    + "SET cidade = ? ,estado = ? ,bairro = ?"
-                    + "WHERE id_endereco = ?");
-            
-            stmt.setString(1, l.getEndereco().getCidade());
-            stmt.setString(2, l.getEndereco().getEstado());
-            stmt.setString(3, l.getEndereco().getBairro()); 
-            stmt.setInt(5, l.getId());
-            
-            stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
             

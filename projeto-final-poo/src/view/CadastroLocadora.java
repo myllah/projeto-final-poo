@@ -1,7 +1,6 @@
 
 package view;
 
-import classes.Endereco;
 import classes.Locadora;
 import connection.LocadoraDAO;
 import validacao.ValidaLocadora;
@@ -32,12 +31,6 @@ public class CadastroLocadora extends javax.swing.JFrame {
         cnpj = new javax.swing.JFormattedTextField();
         jLTelefone = new javax.swing.JLabel();
         telefone = new javax.swing.JFormattedTextField();
-        jLEstado = new javax.swing.JLabel();
-        estado = new javax.swing.JTextField();
-        jLCidade = new javax.swing.JLabel();
-        cidade = new javax.swing.JTextField();
-        jLBairro = new javax.swing.JLabel();
-        bairro = new javax.swing.JTextField();
         jLSenha = new javax.swing.JLabel();
         senha = new javax.swing.JPasswordField();
         cadastrar = new javax.swing.JButton();
@@ -95,15 +88,6 @@ public class CadastroLocadora extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jLEstado.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
-        jLEstado.setText("Estado");
-
-        jLCidade.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
-        jLCidade.setText("Cidade");
-
-        jLBairro.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
-        jLBairro.setText("Bairro");
-
         jLSenha.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLSenha.setText("Senha");
 
@@ -123,12 +107,6 @@ public class CadastroLocadora extends javax.swing.JFrame {
         jLayeredPane2.setLayer(cnpj, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jLTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(telefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(jLEstado, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(estado, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(jLCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(cidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(jLBairro, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(bairro, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jLSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(senha, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(cadastrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -153,29 +131,15 @@ public class CadastroLocadora extends javax.swing.JFrame {
                     .addGroup(jLayeredPane2Layout.createSequentialGroup()
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLTelefone)
-                            .addComponent(jLSenha)
-                            .addComponent(jLCidade))
+                            .addComponent(jLSenha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(senha)
-                            .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                                        .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLEstado))
-                                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                                        .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLBairro)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(estado, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                                    .addComponent(bairro)))))))
+                            .addComponent(telefone)))))
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
                 .addGap(245, 245, 245)
                 .addComponent(cadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,41 +148,24 @@ public class CadastroLocadora extends javax.swing.JFrame {
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLNome)
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(30, 30, 30)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLEmail)
                     .addGroup(jLayeredPane2Layout.createSequentialGroup()
                         .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
+                        .addGap(30, 30, 30)
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLCnpj))
-                        .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLTelefone)
-                                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLEstado)
-                                    .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(18, 18, 18)
-                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLCidade)
-                            .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLBairro))
-                        .addGap(13, 13, 13))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
-                        .addComponent(bairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                            .addComponent(jLTelefone)
+                            .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(30, 30, 30)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLSenha))
-                .addGap(25, 25, 25)
+                .addGap(30, 30, 30)
                 .addComponent(cadastrar)
                 .addContainerGap())
         );
@@ -240,7 +187,7 @@ public class CadastroLocadora extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(preencha, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
+                .addComponent(jLayeredPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))
         );
 
         pack();
@@ -298,17 +245,11 @@ public class CadastroLocadora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bairro;
     private javax.swing.JButton cadastrar;
-    private javax.swing.JTextField cidade;
     private javax.swing.JFormattedTextField cnpj;
     private javax.swing.JTextField email;
-    private javax.swing.JTextField estado;
-    private javax.swing.JLabel jLBairro;
-    private javax.swing.JLabel jLCidade;
     private javax.swing.JLabel jLCnpj;
     private javax.swing.JLabel jLEmail;
-    private javax.swing.JLabel jLEstado;
     private javax.swing.JLabel jLNome;
     private javax.swing.JLabel jLSenha;
     private javax.swing.JLabel jLTelefone;
@@ -323,17 +264,12 @@ public class CadastroLocadora extends javax.swing.JFrame {
     public boolean testar(){
         
         Locadora l = new Locadora();
-        Endereco e = new Endereco();
 
         l.setNome(nome.getText());
         l.setEmail(email.getText());
         l.setCnpj(cnpj.getText());
         l.setTelefone(telefone.getText());
         
-        e.setEstado(estado.getText());
-        e.setCidade(cidade.getText());
-        e.setBairro(bairro.getText());
-        l.setEndereco(e);
         l.setSenha( String.valueOf(senha.getPassword()));
 
         ValidaLocadora vl = new ValidaLocadora();

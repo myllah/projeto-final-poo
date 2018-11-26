@@ -4,9 +4,7 @@ package classes;
 public class Locadora extends Everyone{
     
     private int id;
-    private int idEndereco;
     private String cnpj;
-    private Endereco endereco;
     
     public Locadora(){}
     
@@ -18,14 +16,6 @@ public class Locadora extends Everyone{
         this.cnpj = cnpj;
     }
     
-    public Endereco getEndereco(){
-        return endereco;
-    }
-    
-    public void setEndereco(Endereco endereco){
-        this.endereco = endereco;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -33,15 +23,5 @@ public class Locadora extends Everyone{
     public int getId() {
         return id;
     }
-
-    public void setIdEndereco(int idEndereco) {
-        this.idEndereco = idEndereco;
-    }
-
-    public int getIdEndereco() {
-        return idEndereco;
-    }
-
-   
-    
+  
 }

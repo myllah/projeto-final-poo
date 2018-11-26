@@ -68,7 +68,6 @@ public class PrincipalCliente extends javax.swing.JFrame {
         buscarMotocicletas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
         jPLocadora = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jTFbuscarMarca1 = new javax.swing.JTextField();
@@ -366,22 +365,15 @@ public class PrincipalCliente extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(118, 118, 118))
         );
         jPVeiculosLayout.setVerticalGroup(
             jPVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPVeiculosLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(jPVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPVeiculosLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPVeiculosLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -804,7 +796,6 @@ public class PrincipalCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTFbuscarMarca;
     private javax.swing.JTextField jTFbuscarMarca1;
     private javax.swing.JTextField jTFbuscarModelo;

@@ -41,7 +41,7 @@
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Component id="preencha" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLayeredPane2" pref="357" max="32767" attributes="0"/>
+              <Component id="jLayeredPane2" pref="392" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -118,30 +118,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLSenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLCidade" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="senha" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="telefone" min="-2" pref="220" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLEstado" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cidade" min="-2" pref="220" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLBairro" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="estado" pref="220" max="32767" attributes="0"/>
-                                      <Component id="bairro" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="telefone" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -149,7 +130,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
                   <Component id="cadastrar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="264" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -161,54 +142,29 @@
                       <Component id="jLNome" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="nome" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="email" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cnpj" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="telefone" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="estado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="telefone" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="bairro" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="senha" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLSenha" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="cadastrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -265,36 +221,6 @@
               <Format format="(##) # ####-####" subtype="-1" type="5"/>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLEstado">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Noto Sans" size="16" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Estado"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="estado">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLCidade">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Noto Sans" size="16" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cidade"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="cidade">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLBairro">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Noto Sans" size="16" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Bairro"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="bairro">
         </Component>
         <Component class="javax.swing.JLabel" name="jLSenha">
           <Properties>

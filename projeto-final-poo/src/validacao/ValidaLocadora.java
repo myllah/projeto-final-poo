@@ -50,30 +50,7 @@ public class ValidaLocadora {
            }
            resposta = true;
        }
-       if(ValidaL.estadoVazio(l.getEndereco().getEstado())== true){
-           if(txt == null){
-               txt = "\nEstado vazio";
-           }else{
-               txt = txt + "\nEstado vazio";
-           }
-           resposta = true;
-       }
-       if(ValidaL.cidadeVazia(l.getEndereco().getCidade())== true){
-          if(txt == null){
-               txt = "\nCidade vazia";
-           }else{
-               txt = txt + "\nCidade vazia";
-           }
-           resposta = true;
-       } 
-        if(ValidaL.bairroVazio(l.getEndereco().getBairro())== true){
-           if(txt == null){
-               txt = "\nBairro vazio";
-           }else{
-               txt = txt + "\nBairro vazio";
-           }
-           resposta = true;
-       } 
+ 
        if(ValidaLC.validaSenha(l.getSenha()) == true){
            if(txt == null){
                txt = "\nA Senha deve ter entre 6 e 12 caracteres";

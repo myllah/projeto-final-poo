@@ -5,7 +5,6 @@
  */
 package view;
 
-import classes.Endereco;
 import classes.Veiculo;
 import classes.Locadora;
 import connection.ClienteDAO;
@@ -822,18 +821,13 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         
         LocadoraDAO dao = new LocadoraDAO();
         Locadora l = new Locadora();
-        Endereco e = new Endereco();
         
         l.setNome(nomePerfilLocadora.getText());
         l.setEmail(emailPerfilLocadora.getText());
         l.setTelefone(telefonePerfilLocadora.getText());
         l.setSenha(senhaPerfilLocadora.getText());
         l.setId(Integer.parseInt(IdPerfilLocadora.getText()));
-//        e.setEstado(estadoPerfilLocadora.getText());
-//        e.setCidade(cidadePerfilLocadora.getText());
-//        e.setBairro(bairroPerfilLocadora.getText());
-//        l.setEndereco(e);
-        
+
         dao.update(l);
         
     }//GEN-LAST:event_atualizarPerfil1ActionPerformed
@@ -1018,9 +1012,6 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         nomePerfilLocadora.setText(l.getNome());
         emailPerfilLocadora.setText(l.getEmail());
         telefonePerfilLocadora.setText(l.getTelefone());
-//        estadoPerfilLocadora.setText(l.getEndereco().getEstado());
-//        cidadePerfilLocadora.setText(l.getEndereco().getCidade());
-//        bairroPerfilLocadora.setText(l.getEndereco().getBairro());
         senhaPerfilLocadora.setText(l.getSenha());
         
     }
