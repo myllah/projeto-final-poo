@@ -4,6 +4,7 @@ package classes;
 public class Veiculo {
     
     private int id;
+    private int id_locadora;
     private String veiculo;
     private String marca;
     private String modelo;
@@ -95,6 +96,14 @@ public class Veiculo {
 
     public void setVeiculo(String veiculo) {
         this.veiculo = veiculo;
+    }
+
+    public int getId_locadora() {
+        return id_locadora;
+    }
+
+    public void setId_locadora(int id_locadora) {
+        this.id_locadora = id_locadora;
     }
  
 }    

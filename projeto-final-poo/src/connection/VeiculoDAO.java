@@ -20,8 +20,9 @@ public class VeiculoDAO {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("INSERT INTO veiculo (veiculo_tipo,marca,modelo,precoDia,ano,cor,combustivel,motor,placa)"
-                    + " VALUES(?,?,?,?,?,?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO veiculo"
+                    + " (veiculo_tipo,marca,modelo,precoDia,ano,cor,combustivel,motor,placa,id_locadora)"
+                    + " VALUES(?,?,?,?,?,?,?,?,?,?)");
             
             stmt.setString(1, v.getVeiculo());
             stmt.setString(2, v.getMarca());
@@ -31,7 +32,8 @@ public class VeiculoDAO {
             stmt.setString(6, v.getCor());
             stmt.setString(7, v.getCombustivel());
             stmt.setString(8, v.getMotor());
-            stmt.setString(9, v.getPlaca());           
+            stmt.setString(9, v.getPlaca());
+            stmt.setInt(10, v.getId_locadora());
             
             stmt.executeUpdate();
                           
@@ -55,6 +57,49 @@ public class VeiculoDAO {
 
         try {
             stmt = con.prepareStatement("SELECT * FROM veiculo");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Veiculo veiculo = new Veiculo();
+
+                veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setPrecoDia(rs.getDouble("precoDia"));
+                veiculo.setAno(rs.getInt("ano"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getString("combustivel"));
+                veiculo.setMotor(rs.getString("motor"));
+                veiculo.setPlaca(rs.getString("placa"));
+                
+                veiculos.add(veiculo); 
+                
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return veiculos;
+
+    }
+    
+     public List<Veiculo> read(int id) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE id_locadora LIKE ?");
+            stmt.setString(1, "%"+id+"%");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -128,6 +173,50 @@ public class VeiculoDAO {
 
     }
     
+    public List<Veiculo> readForMarca(String desc, int id) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE marca LIKE ? and id_locadora LIKE ?");
+            stmt.setString(1, "%"+desc+"%");
+            stmt.setString(2, "%"+id+"%");
+            
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Veiculo veiculo = new Veiculo();
+                
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setPrecoDia(rs.getDouble("precoDia"));
+                veiculo.setAno(rs.getInt("ano"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getString("combustivel"));
+                veiculo.setMotor(rs.getString("motor"));
+                veiculo.setPlaca(rs.getString("placa"));
+                
+                veiculos.add(veiculo);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return veiculos;
+
+    }
+    
     public List<Veiculo> readForModelo(String desc) {
 
         Connection con = ConnectionFactory.getConnection();
@@ -170,7 +259,51 @@ public class VeiculoDAO {
         return veiculos;
 
     }
+    public List<Veiculo> readForModelo(String desc, int id) {
 
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE modelo LIKE ? and id_locadora LIKE ?");
+            stmt.setString(1, "%"+desc+"%");
+            stmt.setString(2, "%"+id+"%");
+            
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Veiculo veiculo = new Veiculo();
+                
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
+                veiculo.setPrecoDia(rs.getDouble("precoDia"));
+                veiculo.setAno(rs.getInt("ano"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getString("combustivel"));
+                veiculo.setMotor(rs.getString("motor"));
+                veiculo.setPlaca(rs.getString("placa"));
+                
+                veiculos.add(veiculo);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return veiculos;
+
+    }
+
+    
     public void update(Veiculo v) {
 
         Connection con = ConnectionFactory.getConnection();
@@ -267,7 +400,48 @@ public class VeiculoDAO {
         return veiculos;
 
     }
-     
+      public List<Veiculo> readForCarros(int id) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Veiculo> veiculos = new ArrayList<>();
+        String carro = "Carro";
+        try {
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE veiculo_tipo LIKE ? and id_locadora LIKE ?");
+            stmt.setString(1, "%"+carro+"%");
+            stmt.setString(2, "%"+id+"%");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Veiculo veiculo = new Veiculo();
+                
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setPrecoDia(rs.getDouble("precoDia"));
+                veiculo.setAno(rs.getInt("ano"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getString("combustivel"));
+                veiculo.setMotor(rs.getString("motor"));
+                veiculo.setPlaca(rs.getString("placa"));
+                
+                veiculos.add(veiculo);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return veiculos;
+
+    }
       public List<Veiculo> readForMotocicleta() {
 
         Connection con = ConnectionFactory.getConnection();
@@ -309,5 +483,46 @@ public class VeiculoDAO {
         return veiculos;
 
     }
+ public List<Veiculo> readForMotocicleta(int id) {
 
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Veiculo> veiculos = new ArrayList<>();
+        String moto = "Motocicleta";
+        try {
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE veiculo_tipo LIKE ? and id_locadora LIKE ?");
+            stmt.setString(1, "%"+moto+"%");
+            stmt.setString(2, "%"+id+"%");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Veiculo veiculo = new Veiculo();
+                
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setPrecoDia(rs.getDouble("precoDia"));
+                veiculo.setAno(rs.getInt("ano"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getString("combustivel"));
+                veiculo.setMotor(rs.getString("motor"));
+                veiculo.setPlaca(rs.getString("placa"));
+                
+                veiculos.add(veiculo);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return veiculos;
+
+    }
 }
