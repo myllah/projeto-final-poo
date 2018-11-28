@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class ValidaLocadora {
 
-    public boolean validaCadastro(Locadora l) {
+    public static boolean validaCadastro(Locadora l) {
 
         boolean resposta = false;
         String txt = null;
@@ -68,7 +68,7 @@ public class ValidaLocadora {
         return resposta;
     }
     
-    public boolean validaLogin(Locadora l) {
+    public static boolean validaLogin(Locadora l) {
 
         boolean resposta = false;
         String txt = null;

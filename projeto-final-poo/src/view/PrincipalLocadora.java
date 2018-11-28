@@ -6,6 +6,7 @@ import classes.Locadora;
 import connection.LocadoraDAO;
 import connection.VeiculoDAO;
 import java.awt.CardLayout;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -198,7 +199,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cadastrar)
-                        .addGap(36, 36, 36)
+                        .addGap(29, 29, 29)
                         .addComponent(atualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(excluir)))
@@ -714,7 +715,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         v.setCor(jTFCor.getText());
         v.setCombustivel(jTFCombustivel.getText());
         v.setMotor((String) jCBMotor.getSelectedItem());
-        v.setPlaca(jTFPlaca.getText());
+        v.setPlaca(jTFPlaca.getText().toUpperCase());
         v.setId_locadora(id);
         
         if(ValidaVeiculo.validaCadastro(v) == false){
@@ -775,7 +776,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         v.setCor(jTFCor.getText());
         v.setCombustivel(jTFCombustivel.getText());
         v.setMotor((String) jCBMotor.getSelectedItem());
-        v.setPlaca(jTFPlaca.getText());
+        v.setPlaca(jTFPlaca.getText().toUpperCase());
         v.setId((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
         if(ValidaVeiculo.validaCadastro(v) == false){
             dao.update(v);

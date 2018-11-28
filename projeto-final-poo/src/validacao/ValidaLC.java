@@ -3,7 +3,6 @@ package validacao;
 
 public class ValidaLC{
     
-
      public static boolean nomeVazio(String nome) {
        if(nome.isEmpty()){
            return true;
