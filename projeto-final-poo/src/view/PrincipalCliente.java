@@ -11,24 +11,25 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import validacao.ValidaC;
-import validacao.ValidaVeiculo;
 
 
 public class PrincipalCliente extends javax.swing.JFrame {
 
+    
+    public static int id = 0; 
+     
     public PrincipalCliente(Cliente c) {
+        id = c.getId();
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
 
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        jTable1.setRowSorter(new TableRowSorter(modelo));
+        DefaultTableModel modelo = (DefaultTableModel) jTableVeiculo.getModel();
+        jTableVeiculo.setRowSorter(new TableRowSorter(modelo));
         
         setPerfil(c);
-        
-        readJTable();
-       
-        
+        readJTableVeiculo();
+        readJTableLocadora();
+ 
     }
 
     /**
@@ -41,6 +42,45 @@ public class PrincipalCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelPrincipal = new javax.swing.JPanel();
+        jPVeiculos = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jTFbuscarMarca = new javax.swing.JTextField();
+        buscarMarca = new javax.swing.JButton();
+        buscarCarros = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTFbuscarModelo = new javax.swing.JTextField();
+        buscarModelo = new javax.swing.JButton();
+        bucarTodosVeiculos = new javax.swing.JButton();
+        buscarMotocicletas = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jTFbuscarIdVeiculo = new javax.swing.JTextField();
+        buscarIdVeiculo = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jTFbuscarIdLocadora = new javax.swing.JTextField();
+        buscarIdLocadora = new javax.swing.JButton();
+        jTFbuscarAno = new javax.swing.JTextField();
+        buscarAno = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jTFbuscarCor = new javax.swing.JTextField();
+        buscarCor = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableVeiculo = new javax.swing.JTable();
+        jPLocadora = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jTFbuscarLocadoraNome = new javax.swing.JTextField();
+        buscarLocadoraNome = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTFbuscarLocadoraCNPJ = new javax.swing.JTextField();
+        buscarLocadoraCNPJ = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jTFBuscarLocadoraIdLocadora = new javax.swing.JTextField();
+        BuscarLocadoraLocadoraId = new javax.swing.JButton();
+        bucarTodasLocadoras = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableLocadora = new javax.swing.JTable();
         jPMeuPerfil = new javax.swing.JPanel();
         jLayeredPane3 = new javax.swing.JLayeredPane();
         jLNome1 = new javax.swing.JLabel();
@@ -55,32 +95,9 @@ public class PrincipalCliente extends javax.swing.JFrame {
         atualizarPerfil = new javax.swing.JButton();
         jLNome2 = new javax.swing.JLabel();
         idPerfilCliente = new javax.swing.JLabel();
-        jPVeiculos = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jTFbuscarMarca = new javax.swing.JTextField();
-        buscarMarca = new javax.swing.JButton();
-        buscarCarros = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTFbuscarModelo = new javax.swing.JTextField();
-        buscarModelo = new javax.swing.JButton();
-        bucarTodos = new javax.swing.JButton();
-        buscarMotocicletas = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPLocadora = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jTFbuscarMarca1 = new javax.swing.JTextField();
-        buscarMarca1 = new javax.swing.JButton();
-        buscarCarros1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTFbuscarModelo1 = new javax.swing.JTextField();
-        buscarModelo1 = new javax.swing.JButton();
-        bucarTodos1 = new javax.swing.JButton();
-        buscarMotocicletas1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jPSobre = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMMeuPerfil = new javax.swing.JMenu();
         jMPesquisarVeiculo = new javax.swing.JMenu();
@@ -90,6 +107,435 @@ public class PrincipalCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanelPrincipal.setLayout(new java.awt.CardLayout());
+
+        jTFbuscarMarca.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jTFbuscarMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarMarcaKeyPressed(evt);
+            }
+        });
+
+        buscarMarca.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarMarca.setText("BUSCAR");
+        buscarMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarMarcaActionPerformed(evt);
+            }
+        });
+
+        buscarCarros.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarCarros.setText("Ver somente carros");
+        buscarCarros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarCarrosActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        jLabel1.setText("Marca");
+
+        jLabel2.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        jLabel2.setText("Modelo");
+
+        jTFbuscarModelo.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jTFbuscarModelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarModeloKeyPressed(evt);
+            }
+        });
+
+        buscarModelo.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarModelo.setText("BUSCAR");
+        buscarModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarModeloActionPerformed(evt);
+            }
+        });
+
+        bucarTodosVeiculos.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        bucarTodosVeiculos.setText("Ver todos os veículos");
+        bucarTodosVeiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bucarTodosVeiculosActionPerformed(evt);
+            }
+        });
+
+        buscarMotocicletas.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarMotocicletas.setText("Ver somente motocicletas");
+        buscarMotocicletas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarMotocicletasActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        jLabel7.setText("Id do Veiculo");
+
+        jTFbuscarIdVeiculo.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jTFbuscarIdVeiculo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarIdVeiculoKeyPressed(evt);
+            }
+        });
+
+        buscarIdVeiculo.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarIdVeiculo.setText("BUSCAR");
+        buscarIdVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarIdVeiculoActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        jLabel8.setText("Id da Locadora");
+
+        jTFbuscarIdLocadora.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jTFbuscarIdLocadora.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarIdLocadoraKeyPressed(evt);
+            }
+        });
+
+        buscarIdLocadora.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarIdLocadora.setText("BUSCAR");
+        buscarIdLocadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarIdLocadoraActionPerformed(evt);
+            }
+        });
+
+        jTFbuscarAno.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jTFbuscarAno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarAnoKeyPressed(evt);
+            }
+        });
+
+        buscarAno.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarAno.setText("BUSCAR");
+        buscarAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarAnoActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        jLabel10.setText("Ano");
+
+        jLabel11.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        jLabel11.setText("Cor");
+
+        jTFbuscarCor.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jTFbuscarCor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarCorKeyPressed(evt);
+            }
+        });
+
+        buscarCor.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarCor.setText("BUSCAR");
+        buscarCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarCorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(buscarMotocicletas)
+                .addGap(18, 18, 18)
+                .addComponent(buscarCarros)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTFbuscarCor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarCor))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTFbuscarModelo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarModelo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTFbuscarMarca)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarMarca))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTFbuscarIdVeiculo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarIdVeiculo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTFbuscarIdLocadora)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarIdLocadora))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTFbuscarAno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarAno)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bucarTodosVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bucarTodosVeiculos)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarMotocicletas)
+                    .addComponent(buscarCarros))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTFbuscarIdVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarIdVeiculo))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTFbuscarIdLocadora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarIdLocadora))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFbuscarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarMarca)
+                    .addComponent(jLabel1))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTFbuscarModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarModelo))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFbuscarAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(buscarAno))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jTFbuscarCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarCor))
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+
+        jTableVeiculo.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jTableVeiculo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Veiculo", "Id Locadora", "Veículo", "Marca", "Modelo", "Preço", "Ano", "Cor", "Combustível", "Motor", "Placa"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, false, true, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableVeiculo.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        jTableVeiculo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(jTableVeiculo);
+
+        javax.swing.GroupLayout jPVeiculosLayout = new javax.swing.GroupLayout(jPVeiculos);
+        jPVeiculos.setLayout(jPVeiculosLayout);
+        jPVeiculosLayout.setHorizontalGroup(
+            jPVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPVeiculosLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE)
+                .addGap(30, 30, 30))
+        );
+        jPVeiculosLayout.setVerticalGroup(
+            jPVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPVeiculosLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38))
+        );
+
+        jPanelPrincipal.add(jPVeiculos, "pesquisarVeiculos");
+
+        jPLocadora.setRequestFocusEnabled(false);
+
+        jTFbuscarLocadoraNome.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jTFbuscarLocadoraNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarLocadoraNomeKeyPressed(evt);
+            }
+        });
+
+        buscarLocadoraNome.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarLocadoraNome.setText("BUSCAR");
+        buscarLocadoraNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLocadoraNomeActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        jLabel3.setText("Nome");
+
+        jLabel4.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        jLabel4.setText("CNPJ");
+
+        jTFbuscarLocadoraCNPJ.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jTFbuscarLocadoraCNPJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarLocadoraCNPJKeyPressed(evt);
+            }
+        });
+
+        buscarLocadoraCNPJ.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        buscarLocadoraCNPJ.setText("BUSCAR");
+        buscarLocadoraCNPJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLocadoraCNPJActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        jLabel18.setText("Id da Locadora");
+
+        jTFBuscarLocadoraIdLocadora.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jTFBuscarLocadoraIdLocadora.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFBuscarLocadoraIdLocadoraKeyPressed(evt);
+            }
+        });
+
+        BuscarLocadoraLocadoraId.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        BuscarLocadoraLocadoraId.setText("BUSCAR");
+        BuscarLocadoraLocadoraId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarLocadoraLocadoraIdActionPerformed(evt);
+            }
+        });
+
+        bucarTodasLocadoras.setFont(new java.awt.Font("Noto Sans", 3, 15)); // NOI18N
+        bucarTodasLocadoras.setText("Ver todas as Locadoras");
+        bucarTodasLocadoras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bucarTodasLocadorasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTFbuscarLocadoraCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buscarLocadoraCNPJ))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTFbuscarLocadoraNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buscarLocadoraNome))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTFBuscarLocadoraIdLocadora)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BuscarLocadoraLocadoraId))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bucarTodasLocadoras, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(bucarTodasLocadoras)
+                .addGap(60, 60, 60)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jTFBuscarLocadoraIdLocadora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BuscarLocadoraLocadoraId))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFbuscarLocadoraNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarLocadoraNome)
+                    .addComponent(jLabel3))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTFbuscarLocadoraCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarLocadoraCNPJ))
+                .addContainerGap(163, Short.MAX_VALUE))
+        );
+
+        jTableLocadora.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jTableLocadora.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Locadora", "Nome", "CNPJ", "Telefone", "E-mail"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableLocadora.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        jTableLocadora.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane2.setViewportView(jTableLocadora);
+
+        javax.swing.GroupLayout jPLocadoraLayout = new javax.swing.GroupLayout(jPLocadora);
+        jPLocadora.setLayout(jPLocadoraLayout);
+        jPLocadoraLayout.setHorizontalGroup(
+            jPLocadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPLocadoraLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE)
+                .addGap(30, 30, 30))
+        );
+        jPLocadoraLayout.setVerticalGroup(
+            jPLocadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPLocadoraLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPLocadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38))
+        );
+
+        jPanelPrincipal.add(jPLocadora, "pesquisarLocadora");
 
         jLayeredPane3.setPreferredSize(new java.awt.Dimension(266, 253));
 
@@ -178,7 +624,7 @@ public class PrincipalCliente extends javax.swing.JFrame {
             jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane3Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLNome2)
                     .addComponent(idPerfilCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
@@ -211,7 +657,7 @@ public class PrincipalCliente extends javax.swing.JFrame {
             .addGroup(jPMeuPerfilLayout.createSequentialGroup()
                 .addGap(334, 334, 334)
                 .addComponent(jLayeredPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(411, Short.MAX_VALUE))
         );
         jPMeuPerfilLayout.setVerticalGroup(
             jPMeuPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,320 +669,37 @@ public class PrincipalCliente extends javax.swing.JFrame {
 
         jPanelPrincipal.add(jPMeuPerfil, "meuPerfil");
 
-        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel1FocusLost(evt);
-            }
-        });
+        jLabel5.setFont(new java.awt.Font("Noto Serif", 3, 24)); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon.jpeg"))); // NOI18N
+        jLabel5.setText("AUTOVERHUUR");
 
-        buscarMarca.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        buscarMarca.setText("BUSCAR");
-        buscarMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarMarcaActionPerformed(evt);
-            }
-        });
+        jLabel6.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
+        jLabel6.setText("Nós somos a Autoverhuur. Esse nome vem do holandês e significa aluguel de veiculos.");
 
-        buscarCarros.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        buscarCarros.setText("Ver somente carros");
-        buscarCarros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarCarrosActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        jLabel1.setText("Buscar por Marca");
-
-        jLabel2.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        jLabel2.setText("Buscar por Modelo");
-
-        buscarModelo.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        buscarModelo.setText("BUSCAR");
-        buscarModelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarModeloActionPerformed(evt);
-            }
-        });
-
-        bucarTodos.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        bucarTodos.setText("Ver todos os veículos");
-        bucarTodos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bucarTodosActionPerformed(evt);
-            }
-        });
-
-        buscarMotocicletas.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        buscarMotocicletas.setText("Ver somente motocicletas");
-        buscarMotocicletas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarMotocicletasActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTFbuscarModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscarModelo))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFbuscarMarca)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscarMarca))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(buscarMotocicletas)
-                        .addGap(44, 44, 44)
-                        .addComponent(buscarCarros)))
+        javax.swing.GroupLayout jPSobreLayout = new javax.swing.GroupLayout(jPSobre);
+        jPSobre.setLayout(jPSobreLayout);
+        jPSobreLayout.setHorizontalGroup(
+            jPSobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPSobreLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 161, Short.MAX_VALUE)
-                .addComponent(bucarTodos)
-                .addGap(147, 147, 147))
+            .addGroup(jPSobreLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel6)
+                .addContainerGap(598, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bucarTodos)
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarMotocicletas)
-                    .addComponent(buscarCarros))
-                .addGap(72, 72, 72)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFbuscarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(buscarMarca))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTFbuscarModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarModelo))
-                .addContainerGap(247, Short.MAX_VALUE))
+        jPSobreLayout.setVerticalGroup(
+            jPSobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPSobreLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel6)
+                .addContainerGap(422, Short.MAX_VALUE))
         );
 
-        jTable1.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Veículo", "Marca", "Modelo", "Preço", "Ano", "Cor", "Combustível", "Motor", "Placa"
-            }
-        ));
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTable1KeyReleased(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPVeiculosLayout = new javax.swing.GroupLayout(jPVeiculos);
-        jPVeiculos.setLayout(jPVeiculosLayout);
-        jPVeiculosLayout.setHorizontalGroup(
-            jPVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPVeiculosLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
-        );
-        jPVeiculosLayout.setVerticalGroup(
-            jPVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPVeiculosLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPVeiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jPanelPrincipal.add(jPVeiculos, "pesquisarVeiculos");
-
-        jPanel2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel2FocusLost(evt);
-            }
-        });
-
-        jTFbuscarMarca1.setEnabled(false);
-
-        buscarMarca1.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        buscarMarca1.setText("BUSCAR");
-        buscarMarca1.setEnabled(false);
-        buscarMarca1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarMarca1ActionPerformed(evt);
-            }
-        });
-
-        buscarCarros1.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        buscarCarros1.setText("Ver somente carros");
-        buscarCarros1.setEnabled(false);
-        buscarCarros1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarCarros1ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        jLabel3.setText("Buscar por Marca");
-        jLabel3.setEnabled(false);
-
-        jLabel4.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        jLabel4.setText("Buscar por Modelo");
-        jLabel4.setEnabled(false);
-
-        jTFbuscarModelo1.setEnabled(false);
-
-        buscarModelo1.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        buscarModelo1.setText("BUSCAR");
-        buscarModelo1.setEnabled(false);
-        buscarModelo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarModelo1ActionPerformed(evt);
-            }
-        });
-
-        bucarTodos1.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        bucarTodos1.setText("Ver todos os veículos");
-        bucarTodos1.setEnabled(false);
-        bucarTodos1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bucarTodos1ActionPerformed(evt);
-            }
-        });
-
-        buscarMotocicletas1.setFont(new java.awt.Font("Noto Sans", 3, 14)); // NOI18N
-        buscarMotocicletas1.setText("Ver somente motocicletas");
-        buscarMotocicletas1.setEnabled(false);
-        buscarMotocicletas1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarMotocicletas1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTFbuscarModelo1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscarModelo1))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFbuscarMarca1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscarMarca1))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(buscarMotocicletas1)
-                        .addGap(44, 44, 44)
-                        .addComponent(buscarCarros1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 161, Short.MAX_VALUE)
-                .addComponent(bucarTodos1)
-                .addGap(147, 147, 147))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bucarTodos1)
-                .addGap(42, 42, 42)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarMotocicletas1)
-                    .addComponent(buscarCarros1))
-                .addGap(72, 72, 72)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFbuscarMarca1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(buscarMarca1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTFbuscarModelo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarModelo1))
-                .addContainerGap(247, Short.MAX_VALUE))
-        );
-
-        jTable2.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "CNPJ", "Nome", "Telefone", "E-mail"
-            }
-        ));
-        jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
-            }
-        });
-        jTable2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTable2KeyReleased(evt);
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
-
-        javax.swing.GroupLayout jPLocadoraLayout = new javax.swing.GroupLayout(jPLocadora);
-        jPLocadora.setLayout(jPLocadoraLayout);
-        jPLocadoraLayout.setHorizontalGroup(
-            jPLocadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPLocadoraLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPLocadoraLayout.setVerticalGroup(
-            jPLocadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPLocadoraLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPLocadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jPanelPrincipal.add(jPLocadora, "pesquisarLocadora");
+        jPanelPrincipal.add(jPSobre, "sobre");
 
         jMMeuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon25.png"))); // NOI18N
         jMMeuPerfil.setText("Meu perfil");
@@ -609,12 +772,14 @@ public class PrincipalCliente extends javax.swing.JFrame {
     private void jMPesquisarVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMPesquisarVeiculoMouseClicked
         CardLayout cl = (CardLayout) jPanelPrincipal.getLayout();
         cl.show(jPanelPrincipal, "pesquisarVeiculos");
+        readJTableVeiculo();
         jMPesquisarVeiculo.setSelected(false);
     }//GEN-LAST:event_jMPesquisarVeiculoMouseClicked
 
     private void jMPesquisarLocadoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMPesquisarLocadoraMouseClicked
         CardLayout cl = (CardLayout) jPanelPrincipal.getLayout();
         cl.show(jPanelPrincipal, "pesquisarLocadora");
+        readJTableLocadora();   
         jMPesquisarLocadora.setSelected(false);
     }//GEN-LAST:event_jMPesquisarLocadoraMouseClicked
 
@@ -632,83 +797,131 @@ public class PrincipalCliente extends javax.swing.JFrame {
         
         c.setNome(nomePerfilCliente.getText());
         c.setEmail(emailPerfilCliente.getText());
-      //  c.setCpf(cpfPerfilCliente.getText());
         c.setTelefone(telefonePerfilCliente.getText());
         c.setSenha(senhaPerfilCliente.getText());
         c.setId(Integer.parseInt(idPerfilCliente.getText()));
-        //JOptionPane.showMessageDialog(null, c.getCpf() + " ");
         
         dao.update(c);
 
     }//GEN-LAST:event_atualizarPerfilActionPerformed
 
     private void excluirPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirPerfilActionPerformed
-        // TODO add your handling code here:
+        
+        ClienteDAO dao = new ClienteDAO();
+
+            int e = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja deletar a sua conta?");
+            
+            if(e == 0){
+               dao.delete(id);
+               this.dispose(); 
+            }
     }//GEN-LAST:event_excluirPerfilActionPerformed
 
-    private void jPanel1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusLost
-
-    }//GEN-LAST:event_jPanel1FocusLost
-
     private void buscarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMarcaActionPerformed
-        readJTableForMarca(jTFbuscarMarca.getText());
+        readJTableVeiculoMarca(jTFbuscarMarca.getText());
     }//GEN-LAST:event_buscarMarcaActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
-
-    }//GEN-LAST:event_jTable1KeyReleased
-
-    private void buscarCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCarrosActionPerformed
-         readJTableForCarros();
-    }//GEN-LAST:event_buscarCarrosActionPerformed
-
     private void buscarModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarModeloActionPerformed
-         readJTableForModelo(jTFbuscarModelo.getText());
+         readJTableVeiculoModelo(jTFbuscarModelo.getText());
     }//GEN-LAST:event_buscarModeloActionPerformed
 
-    private void bucarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucarTodosActionPerformed
-        readJTable();
-    }//GEN-LAST:event_bucarTodosActionPerformed
+    private void bucarTodosVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucarTodosVeiculosActionPerformed
+        readJTableVeiculo();
+    }//GEN-LAST:event_bucarTodosVeiculosActionPerformed
+
+    private void buscarIdLocadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIdLocadoraActionPerformed
+        readJTableVeiculoIdLocadora(Integer.parseInt(jTFbuscarIdLocadora.getText()));
+    }//GEN-LAST:event_buscarIdLocadoraActionPerformed
+
+    private void buscarAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarAnoActionPerformed
+        readJTableVeiculoAno(jTFbuscarAno.getText());
+    }//GEN-LAST:event_buscarAnoActionPerformed
+
+    private void buscarCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCorActionPerformed
+        readJTableVeiculoCor(jTFbuscarCor.getText());
+    }//GEN-LAST:event_buscarCorActionPerformed
 
     private void buscarMotocicletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMotocicletasActionPerformed
-        readJTableForMotocicleta();
+        readJTableVeiculoMotocicleta();
     }//GEN-LAST:event_buscarMotocicletasActionPerformed
 
-    private void buscarMarca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMarca1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarMarca1ActionPerformed
+    private void buscarCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCarrosActionPerformed
+        readJTableVeiculoCarros();
+    }//GEN-LAST:event_buscarCarrosActionPerformed
 
-    private void buscarCarros1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCarros1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarCarros1ActionPerformed
+    private void buscarIdVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIdVeiculoActionPerformed
+        readJTableVeiculoIdVeiculo(Integer.parseInt(jTFbuscarIdVeiculo.getText()));
+    }//GEN-LAST:event_buscarIdVeiculoActionPerformed
 
-    private void buscarModelo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarModelo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarModelo1ActionPerformed
+    private void buscarLocadoraNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLocadoraNomeActionPerformed
+       readJTableLocadoraNome(jTFbuscarLocadoraNome.getText());
+    }//GEN-LAST:event_buscarLocadoraNomeActionPerformed
 
-    private void bucarTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucarTodos1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bucarTodos1ActionPerformed
+    private void buscarLocadoraCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLocadoraCNPJActionPerformed
+        readJTableLocadoraCNPJ(jTFbuscarLocadoraCNPJ.getText());
+    }//GEN-LAST:event_buscarLocadoraCNPJActionPerformed
 
-    private void buscarMotocicletas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMotocicletas1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarMotocicletas1ActionPerformed
+    private void BuscarLocadoraLocadoraIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarLocadoraLocadoraIdActionPerformed
+        readJTableLocadoraIdLocadora(Integer.parseInt(jTFBuscarLocadoraIdLocadora.getText()));
+    }//GEN-LAST:event_BuscarLocadoraLocadoraIdActionPerformed
 
-    private void jPanel2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel2FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel2FocusLost
+    private void bucarTodasLocadorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucarTodasLocadorasActionPerformed
+       readJTableLocadora();
+    }//GEN-LAST:event_bucarTodasLocadorasActionPerformed
 
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable2MouseClicked
+    private void jTFbuscarIdVeiculoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarIdVeiculoKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+             readJTableVeiculoIdVeiculo(Integer.parseInt(jTFbuscarIdVeiculo.getText()));
+        }
+    }//GEN-LAST:event_jTFbuscarIdVeiculoKeyPressed
 
-    private void jTable2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable2KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable2KeyReleased
+    private void jTFbuscarIdLocadoraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarIdLocadoraKeyPressed
+       if (evt.getKeyCode() == evt.VK_ENTER) {
+            readJTableVeiculoIdLocadora(Integer.parseInt(jTFbuscarIdLocadora.getText()));
+        }
+    }//GEN-LAST:event_jTFbuscarIdLocadoraKeyPressed
+
+    private void jTFbuscarMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarMarcaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            readJTableVeiculoMarca(jTFbuscarMarca.getText());
+        }
+    }//GEN-LAST:event_jTFbuscarMarcaKeyPressed
+
+    private void jTFbuscarModeloKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarModeloKeyPressed
+         if (evt.getKeyCode() == evt.VK_ENTER) {
+            readJTableVeiculoModelo(jTFbuscarModelo.getText());
+        }
+    }//GEN-LAST:event_jTFbuscarModeloKeyPressed
+
+    private void jTFbuscarAnoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarAnoKeyPressed
+         if (evt.getKeyCode() == evt.VK_ENTER) {
+             readJTableVeiculoAno(jTFbuscarAno.getText());
+        }
+    }//GEN-LAST:event_jTFbuscarAnoKeyPressed
+
+    private void jTFbuscarCorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarCorKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+              readJTableVeiculoCor(jTFbuscarCor.getText());
+        }
+    }//GEN-LAST:event_jTFbuscarCorKeyPressed
+
+    private void jTFBuscarLocadoraIdLocadoraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscarLocadoraIdLocadoraKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+               readJTableLocadoraIdLocadora(Integer.parseInt(jTFBuscarLocadoraIdLocadora.getText()));
+        }
+    }//GEN-LAST:event_jTFBuscarLocadoraIdLocadoraKeyPressed
+
+    private void jTFbuscarLocadoraNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarLocadoraNomeKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+               readJTableLocadoraNome(jTFbuscarLocadoraNome.getText());
+        }
+    }//GEN-LAST:event_jTFbuscarLocadoraNomeKeyPressed
+
+    private void jTFbuscarLocadoraCNPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarLocadoraCNPJKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+               readJTableLocadoraCNPJ(jTFbuscarLocadoraCNPJ.getText());
+        }
+    }//GEN-LAST:event_jTFbuscarLocadoraCNPJKeyPressed
 
     /**
      * @param args the command line arguments
@@ -755,17 +968,20 @@ public class PrincipalCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BuscarLocadoraLocadoraId;
     private javax.swing.JButton atualizarPerfil;
-    private javax.swing.JButton bucarTodos;
-    private javax.swing.JButton bucarTodos1;
+    private javax.swing.JButton bucarTodasLocadoras;
+    private javax.swing.JButton bucarTodosVeiculos;
+    private javax.swing.JButton buscarAno;
     private javax.swing.JButton buscarCarros;
-    private javax.swing.JButton buscarCarros1;
+    private javax.swing.JButton buscarCor;
+    private javax.swing.JButton buscarIdLocadora;
+    private javax.swing.JButton buscarIdVeiculo;
+    private javax.swing.JButton buscarLocadoraCNPJ;
+    private javax.swing.JButton buscarLocadoraNome;
     private javax.swing.JButton buscarMarca;
-    private javax.swing.JButton buscarMarca1;
     private javax.swing.JButton buscarModelo;
-    private javax.swing.JButton buscarModelo1;
     private javax.swing.JButton buscarMotocicletas;
-    private javax.swing.JButton buscarMotocicletas1;
     private javax.swing.JTextField emailPerfilCliente;
     private javax.swing.JButton excluirPerfil;
     private javax.swing.JLabel idPerfilCliente;
@@ -775,9 +991,16 @@ public class PrincipalCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLSenha1;
     private javax.swing.JLabel jLTelefonePerfil;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JMenu jMMeuPerfil;
     private javax.swing.JMenu jMPesquisarLocadora;
@@ -786,31 +1009,50 @@ public class PrincipalCliente extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JPanel jPLocadora;
     private javax.swing.JPanel jPMeuPerfil;
+    private javax.swing.JPanel jPSobre;
     private javax.swing.JPanel jPVeiculos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTFBuscarLocadoraIdLocadora;
+    private javax.swing.JTextField jTFbuscarAno;
+    private javax.swing.JTextField jTFbuscarCor;
+    private javax.swing.JTextField jTFbuscarIdLocadora;
+    private javax.swing.JTextField jTFbuscarIdVeiculo;
+    private javax.swing.JTextField jTFbuscarLocadoraCNPJ;
+    private javax.swing.JTextField jTFbuscarLocadoraNome;
     private javax.swing.JTextField jTFbuscarMarca;
-    private javax.swing.JTextField jTFbuscarMarca1;
     private javax.swing.JTextField jTFbuscarModelo;
-    private javax.swing.JTextField jTFbuscarModelo1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableLocadora;
+    private javax.swing.JTable jTableVeiculo;
     private javax.swing.JTextField nomePerfilCliente;
     private javax.swing.JPasswordField senhaPerfilCliente;
     private javax.swing.JFormattedTextField telefonePerfilCliente;
     // End of variables declaration//GEN-END:variables
 
-    public void limpar(){
+    public void limparPesquisaVeiculo(){
       
+        jTFbuscarAno.setText(null);
+        jTFbuscarCor.setText(null);
+        jTFbuscarIdLocadora.setText(null);
+        jTFbuscarIdVeiculo.setText(null);
+        jTFbuscarMarca.setText(null);
+        jTFbuscarModelo.setText(null);
+        
+    }
+    public void limparPesquisaLocadora(){
+      
+        jTFBuscarLocadoraIdLocadora.setText(null);
+        jTFbuscarLocadoraCNPJ.setText(null);
+        jTFbuscarLocadoraNome.setText(null);
+        
     }
 
-
-      public void readJTable(){
+      public void readJTableVeiculo(){
           
-            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) jTableVeiculo.getModel();
             modelo.setNumRows(0);
             VeiculoDAO VeiculoDao = new VeiculoDAO();
             
@@ -819,6 +1061,7 @@ public class PrincipalCliente extends javax.swing.JFrame {
                 
                 modelo.addRow(new Object[]{
                     v.getId(),
+                    v.getId_locadora(),
                     v.getVeiculo(),
                     v.getMarca(),
                     v.getModelo(),
@@ -829,18 +1072,95 @@ public class PrincipalCliente extends javax.swing.JFrame {
                     v.getMotor(),
                     v.getPlaca()
                 });
-                  DefaultTableModel a = (DefaultTableModel) jTable1.getModel();
+      }
+      
+    public void readJTableLocadora(){
+          
+            DefaultTableModel modelo = (DefaultTableModel) jTableLocadora.getModel();
+            modelo.setNumRows(0);
+            LocadoraDAO LocadoraDao = new LocadoraDAO();
+            
+            for(Locadora l: LocadoraDao.read())
+                // pegar valor da lista e ir 'setando' no veiculo
+                
+                modelo.addRow(new Object[]{
+                    l.getId(),
+                    l.getNome(),
+                    l.getCnpj(),
+                    l.getTelefone(),
+                    l.getEmail()
+                });
       }
 
-    public void readJTableForMarca(String marca) {
+    public void readJTableLocadoraIdLocadora(int idLocadora) {
         
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        limparPesquisaLocadora();
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableLocadora.getModel();
+         modelo.setNumRows(0);
+         LocadoraDAO ldao = new LocadoraDAO();
+
+        ldao.readForIdLocadora(idLocadora).forEach((l) -> {
+            modelo.addRow(new Object[]{
+                l.getId(),
+                l.getNome(),
+                l.getCnpj(),
+                l.getTelefone(),
+                l.getEmail()
+            });
+        });
+
+    }
+    
+     public void readJTableLocadoraNome(String nome) {
+         
+        limparPesquisaLocadora();
+         
+        DefaultTableModel modelo = (DefaultTableModel) jTableLocadora.getModel();
+         modelo.setNumRows(0);
+         LocadoraDAO ldao = new LocadoraDAO();
+
+        ldao.readForNome(nome).forEach((l) -> {
+            modelo.addRow(new Object[]{
+                l.getId(),
+                l.getNome(),
+                l.getCnpj(),
+                l.getTelefone(),
+                l.getEmail()
+            });
+        });
+    }
+     
+     public void readJTableLocadoraCNPJ(String cnpj) {
+        limparPesquisaLocadora();
+         DefaultTableModel modelo = (DefaultTableModel) jTableLocadora.getModel();
+         modelo.setNumRows(0);
+         LocadoraDAO ldao = new LocadoraDAO();
+
+        ldao.readForCnpj(cnpj).forEach((l) -> {
+            modelo.addRow(new Object[]{
+                l.getId(),
+                l.getNome(),
+                l.getCnpj(),
+                l.getTelefone(),
+                l.getEmail()
+            });
+        });
+
+    }
+    
+    public void readJTableVeiculoMarca(String marca) {
+        
+        limparPesquisaVeiculo();
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableVeiculo.getModel();
         modelo.setNumRows(0);
         VeiculoDAO vdao = new VeiculoDAO();
 
         vdao.readForMarca(marca).forEach((v) -> {
             modelo.addRow(new Object[]{
                 v.getId(),
+                v.getId_locadora(),
                 v.getVeiculo(),
                 v.getMarca(),
                 v.getModelo(),
@@ -855,15 +1175,18 @@ public class PrincipalCliente extends javax.swing.JFrame {
 
     }
     
-    public void readJTableForModelo(String modelo) {
+    public void readJTableVeiculoModelo(String modelo) {
         
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        limparPesquisaVeiculo();
+        
+        DefaultTableModel model = (DefaultTableModel) jTableVeiculo.getModel();
         model.setNumRows(0);
         VeiculoDAO vdao = new VeiculoDAO();
 
         vdao.readForModelo(modelo).forEach((v) -> {
             model.addRow(new Object[]{
                 v.getId(),
+                v.getId_locadora(),
                 v.getVeiculo(),
                 v.getMarca(),
                 v.getModelo(),
@@ -877,15 +1200,41 @@ public class PrincipalCliente extends javax.swing.JFrame {
         });
 
     }
-     public void readJTableForCarros() {
+     public void readJTableVeiculoCarros() {
         
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTableVeiculo.getModel();
         modelo.setNumRows(0);
         VeiculoDAO vdao = new VeiculoDAO();
 
         vdao.readForCarros().forEach((v) -> {
             modelo.addRow(new Object[]{
                 v.getId(),
+                v.getId_locadora(),
+                v.getVeiculo(),
+                v.getMarca(),
+                v.getModelo(),
+                v.getPrecoDia(),
+                v.getAno(),
+                v.getCor(),
+                v.getCombustivel(),
+                v.getMotor(),
+                v.getPlaca()
+            });
+        });
+
+    }
+     public void readJTableVeiculoIdVeiculo(int idVeiculo) {
+         
+        limparPesquisaVeiculo();
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableVeiculo.getModel();
+        modelo.setNumRows(0);
+        VeiculoDAO vdao = new VeiculoDAO();
+
+        vdao.readForIdVeiculo(idVeiculo).forEach((v) -> {
+            modelo.addRow(new Object[]{
+                v.getId(),
+                v.getId_locadora(),
                 v.getVeiculo(),
                 v.getMarca(),
                 v.getModelo(),
@@ -900,15 +1249,67 @@ public class PrincipalCliente extends javax.swing.JFrame {
 
     }
      
-     public void readJTableForMotocicleta() {
+     public void readJTableVeiculoIdLocadora(int idLocadora) {
+         
+        limparPesquisaVeiculo();
         
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTableVeiculo.getModel();
+        modelo.setNumRows(0);
+        VeiculoDAO vdao = new VeiculoDAO();
+
+        vdao.readForIdLocadora(idLocadora).forEach((v) -> {
+            modelo.addRow(new Object[]{
+                v.getId(),
+                v.getId_locadora(),
+                v.getVeiculo(),
+                v.getMarca(),
+                v.getModelo(),
+                v.getPrecoDia(),
+                v.getAno(),
+                v.getCor(),
+                v.getCombustivel(),
+                v.getMotor(),
+                v.getPlaca()
+            });
+        });
+
+    }
+     public void readJTableVeiculoMotocicleta() {
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableVeiculo.getModel();
         modelo.setNumRows(0);
         VeiculoDAO vdao = new VeiculoDAO();
 
         vdao.readForMotocicleta().forEach((v) -> {
             modelo.addRow(new Object[]{
                 v.getId(),
+                v.getId_locadora(), 
+                v.getVeiculo(),
+                v.getMarca(),
+                v.getModelo(),
+                v.getPrecoDia(),
+                v.getAno(),
+                v.getCor(),
+                v.getCombustivel(),
+                v.getMotor(),
+                v.getPlaca()
+            });
+        });
+
+    }
+     
+     public void readJTableVeiculoAno(String ano) {
+            
+        limparPesquisaVeiculo();
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableVeiculo.getModel();
+        modelo.setNumRows(0);
+        VeiculoDAO vdao = new VeiculoDAO();
+
+        vdao.readForAno(ano).forEach((v) -> {
+            modelo.addRow(new Object[]{
+                v.getId(),
+                v.getId_locadora(),
                 v.getVeiculo(),
                 v.getMarca(),
                 v.getModelo(),
@@ -923,26 +1324,32 @@ public class PrincipalCliente extends javax.swing.JFrame {
 
     }
     
-    public void readJTableForDescLocadora(String desc) {
+     public void readJTableVeiculoCor(String cor) {
         
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+         limparPesquisaVeiculo();
+         
+        DefaultTableModel modelo = (DefaultTableModel) jTableVeiculo.getModel();
         modelo.setNumRows(0);
-        LocadoraDAO ldao = new LocadoraDAO();
+        VeiculoDAO vdao = new VeiculoDAO();
 
-        ldao.readForDescLocadora(desc).forEach((l) -> {
+        vdao.readForCor(cor).forEach((v) -> {
             modelo.addRow(new Object[]{
-                
-                l.getId(),
-                l.getCnpj(),
-                l.getNome(),
-                l.getSenha(),
-                l.getEmail(),
-                l.getTelefone()
-                
+                v.getId(),
+                v.getId_locadora(),
+                v.getVeiculo(),
+                v.getMarca(),
+                v.getModelo(),
+                v.getPrecoDia(),
+                v.getAno(),
+                v.getCor(),
+                v.getCombustivel(),
+                v.getMotor(),
+                v.getPlaca()
             });
         });
 
     }
+    
     public void setPerfil(Cliente c){
         
         nomePerfilCliente.setText(c.getNome());
@@ -952,5 +1359,5 @@ public class PrincipalCliente extends javax.swing.JFrame {
         idPerfilCliente.setText(String.valueOf(c.getId()));
         
     }
-
+    
 }

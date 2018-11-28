@@ -1,7 +1,7 @@
 
 package connection;
 import classes.Locadora;
-import classes.Veiculo;
+import exception.InexistentException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,100 +21,91 @@ public class LocadoraDAO {
         
         try {
             
-            stmt = con.prepareStatement("INSERT INTO locadora (cnpj) VALUES(?)");
+            stmt = con.prepareStatement("INSERT INTO locadora (cnpj,nome,senha,telefone,email)"
+                    + " VALUES(?,?,?,?,?)");
             stmt.setString(1, l.getCnpj());
-            stmt.setString(1, l.getNome());
-            stmt.setString(2, l.getSenha());
-            stmt.setString(3, l.getTelefone());
-            stmt.setString(4, l.getEmail());
+            stmt.setString(2, l.getNome());
+            stmt.setString(3, l.getSenha());
+            stmt.setString(4, l.getTelefone());
+            stmt.setString(5, l.getEmail());
             stmt.executeUpdate();
 
-            
-            JOptionPane.showMessageDialog(null, "salvo cm sucesso");
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "erro ao salvar: "+ex);
+            JOptionPane.showMessageDialog(null, "Erro ao salvar: "+ex);
        } finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
         
     }
     
-//     public List<Locadora> read() {
-//
-//        Connection con = ConnectionFactory.getConnection();
-//        
-//        PreparedStatement stmt = null;
-//        ResultSet rs = null;
-//
-//        List<Locadora> locadoras = new ArrayList<>();
-//
-//        try {
-//            stmt = con.prepareStatement("SELECT * FROM locadora INNER JOIN everyone");
-//            rs = stmt.executeQuery();
-//
-//            while (rs.next()) {
-//
-//                Locadora locadora = new Locadora();
-//
-//                locadora.setIdEveryone(rs.getInt("id_everyone"));
-//                locadora.setIdLocadora(rs.getInt("id_locadora"));
-//                //locadora.setIdLocadora(rs.getInt("id_endereco"));
-//                locadora.setCnpj(rs.getString("cnpj"));
-//                locadora.setNome(rs.getString("nome"));
-//                
-//                
-//                locadoras.add(locadora); 
-//     
-//                
-//            }
-            
-            //    private Endereco endereco;
-//      private int id;
-//    private String nome;
-//    private String senha;
-//    private String telefone;
-//    private String email;
-
-//        } catch (SQLException ex) {
-//            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            ConnectionFactory.closeConnection(con, stmt, rs);
-//        }
-//
-//        return locadoras;
-//
-//    }
-    public List<Veiculo> readForDesc(String desc) {
+     public List<Locadora> read() {
 
         Connection con = ConnectionFactory.getConnection();
         
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        List<Veiculo> veiculos = new ArrayList<>();
+        List<Locadora> locadoras = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE marca LIKE ?");
-            stmt.setString(1, "%"+desc+"%");
+            stmt = con.prepareStatement("SELECT * FROM locadora");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Locadora locadora = new Locadora();
+
+                locadora.setId(rs.getInt("id_locadora"));
+                locadora.setCnpj(rs.getString("cnpj"));
+                locadora.setNome(rs.getString("nome"));
+                locadora.setTelefone(rs.getString("telefone"));
+                locadora.setEmail(rs.getString("email"));
+                    
+                locadoras.add(locadora); 
+            
+            }
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return locadoras;
+
+    }
+    
+     public List<Locadora> readForIdLocadora(int idLocadora) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Locadora> locadoras = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM locadora WHERE id_locadora LIKE ?");
+            stmt.setString(1, "%"+idLocadora+"%");
             
             rs = stmt.executeQuery();
 
             while (rs.next()) {
 
-                Veiculo veiculo = new Veiculo();
+                Locadora locadora = new Locadora();
+                locadora.setNome(rs.getString("nome"));
+                locadora.setId(rs.getInt("id_locadora"));
+                locadora.setCnpj(rs.getString("cnpj"));
+                locadora.setSenha(rs.getString("senha"));
+                locadora.setTelefone(rs.getString("telefone"));
+                locadora.setEmail(rs.getString("email"));
                 
-                veiculo.setId(rs.getInt("id_veiculo"));
-                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
-                veiculo.setMarca(rs.getString("marca"));
-                veiculo.setModelo(rs.getString("modelo"));
-                veiculo.setPrecoDia(rs.getDouble("precoDia"));
-                veiculo.setAno(rs.getInt("ano"));
-                veiculo.setCor(rs.getString("cor"));
-                veiculo.setCombustivel(rs.getString("combustivel"));
-                veiculo.setMotor(rs.getString("motor"));
-                veiculo.setPlaca(rs.getString("placa"));
-                
-                veiculos.add(veiculo);
+                locadoras.add(locadora);
+            }
+            
+            if(locadoras.isEmpty()){
+                throw new InexistentException();
             }
 
         } catch (SQLException ex) {
@@ -123,11 +114,11 @@ public class LocadoraDAO {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
 
-        return veiculos;
+        return locadoras;
 
     }
 
-     public List<Locadora> readForDescLocadora(String desc) {
+     public List<Locadora> readForNome(String nome) {
 
         Connection con = ConnectionFactory.getConnection();
         
@@ -138,7 +129,49 @@ public class LocadoraDAO {
 
         try {
             stmt = con.prepareStatement("SELECT * FROM locadora WHERE nome LIKE ?");
-            stmt.setString(1, "%"+desc+"%");
+            stmt.setString(1, "%"+nome+"%");
+            
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Locadora locadora = new Locadora();
+                locadora.setNome(rs.getString("nome"));
+                locadora.setId(rs.getInt("id_locadora"));
+                locadora.setCnpj(rs.getString("cnpj"));
+                locadora.setSenha(rs.getString("senha"));
+                locadora.setTelefone(rs.getString("telefone"));
+                locadora.setEmail(rs.getString("email"));
+                
+                locadoras.add(locadora);
+            }
+            
+             if(locadoras.isEmpty()){
+                throw new InexistentException();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return locadoras;
+
+    }
+
+      public List<Locadora> readForCnpj(String cnpj) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Locadora> locadoras = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM locadora WHERE cnpj LIKE ?");
+            stmt.setString(1, "%"+cnpj+"%");
             
             rs = stmt.executeQuery();
 
@@ -155,6 +188,10 @@ public class LocadoraDAO {
                 locadoras.add(locadora);
             }
 
+             if(locadoras.isEmpty()){
+                throw new InexistentException();
+            }
+             
         } catch (SQLException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -162,63 +199,6 @@ public class LocadoraDAO {
         }
 
         return locadoras;
-
-    }
-
-    
-    public void update(Veiculo v) {
-
-        Connection con = ConnectionFactory.getConnection();
-        
-        PreparedStatement stmt = null;
-
-        try {
-            stmt = con.prepareStatement("UPDATE veiculo "
-                    + "SET veiculo_tipo = ?, marca = ? ,modelo = ? ,precoDia = ? ,ano = ?, "
-                    + "cor = ? ,combustivel = ? ,motor = ? ,placa = ? "
-                    + "WHERE id_veiculo = ?");
-            
-            stmt.setString(1, v.getVeiculo());
-            stmt.setString(2, v.getMarca());
-            stmt.setString(3, v.getModelo());
-            stmt.setDouble(4, v.getPrecoDia());
-            stmt.setInt(5, v.getAno());
-            stmt.setString(6, v.getCor());
-            stmt.setString(7, v.getCombustivel());
-            stmt.setString(8, v.getMotor());
-            stmt.setString(9, v.getPlaca());   
-            stmt.setInt(10, v.getId());
-            
-            stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-        }
-
-    }
-    public void delete(Veiculo v) {
-
-        Connection con = ConnectionFactory.getConnection();
-        
-        PreparedStatement stmt = null;
-
-        try {
-            stmt = con.prepareStatement("DELETE FROM veiculo WHERE id_veiculo = ?");
-            stmt.setInt(1, v.getId());
-
-            stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-        }
-
     }
     
     public Locadora getLogin(String email, String senha) {
@@ -241,9 +221,7 @@ public class LocadoraDAO {
                 l.setNome(rs.getString("nome"));
                 l.setEmail(rs.getString("email"));
                 l.setTelefone(rs.getString("telefone"));
-                l.setSenha(rs.getString("senha"));
-                
-      
+                l.setSenha(rs.getString("senha"));  
             }
 
         } catch (SQLException ex) {
@@ -255,6 +233,7 @@ public class LocadoraDAO {
         return l;
 
     }
+      
     public boolean checklogin(String email, String senha) {
 
         Connection con = ConnectionFactory.getConnection();
@@ -314,7 +293,30 @@ public class LocadoraDAO {
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
-
     }
+  
+    public void delete(int id) {
 
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM locadora WHERE id_locadora = ?");
+            stmt.setInt(1, id);
+
+            stmt.executeUpdate();
+            
+            stmt = con.prepareStatement("DELETE FROM veiculo WHERE id_locadora = ?");
+            stmt.setInt(1, id);
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
 }

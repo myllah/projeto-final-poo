@@ -2,6 +2,7 @@
 package validacao;
 
 import classes.Veiculo;
+import exception.NegativeValueException;
 import javax.swing.JOptionPane;
 
 public class ValidaVeiculo {
@@ -36,6 +37,9 @@ public class ValidaVeiculo {
            }
            resposta = true;
        }
+       if(v.getAno() < 0){
+           throw new NegativeValueException();
+       }
        if(ValidaV.anoVazio(v.getAno()) == true){
             if(txt == null){
                txt = "\nAno vazio";
@@ -43,6 +47,9 @@ public class ValidaVeiculo {
                txt = txt + "\nAno vazio";
            }
            resposta = true;
+       }
+       if(v.getPrecoDia()< 0){
+           throw new NegativeValueException();
        }
        if(ValidaV.precoVazio(v.getPrecoDia())== true){
            if(txt == null){

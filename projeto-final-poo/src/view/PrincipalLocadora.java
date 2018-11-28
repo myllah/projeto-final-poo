@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
 import classes.Veiculo;
@@ -32,7 +28,6 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         jTable1.setRowSorter(new TableRowSorter(modelo));
 
         readJTable(id);
-        
         setPerfil(l);      
         
     }
@@ -47,22 +42,6 @@ public class PrincipalLocadora extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelPrincipal = new javax.swing.JPanel();
-        jPMeuPerfil = new javax.swing.JPanel();
-        jLayeredPane4 = new javax.swing.JLayeredPane();
-        jLNome2 = new javax.swing.JLabel();
-        nomePerfilLocadora = new javax.swing.JTextField();
-        jLEmail2 = new javax.swing.JLabel();
-        emailPerfilLocadora = new javax.swing.JTextField();
-        jLTelefonePerfil1 = new javax.swing.JLabel();
-        telefonePerfilLocadora = new javax.swing.JFormattedTextField();
-        jLSenha2 = new javax.swing.JLabel();
-        senhaPerfilLocadora = new javax.swing.JPasswordField();
-        excluirPerfil = new javax.swing.JButton();
-        atualizarPerfil = new javax.swing.JButton();
-        jLNome3 = new javax.swing.JLabel();
-        IdPerfilLocadora = new javax.swing.JLabel();
-        jPSobre = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jPCadastrar = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jCBVeiculo = new javax.swing.JComboBox<>();
@@ -103,6 +82,23 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         buscarCor = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPMeuPerfil = new javax.swing.JPanel();
+        jLayeredPane4 = new javax.swing.JLayeredPane();
+        jLNome2 = new javax.swing.JLabel();
+        nomePerfilLocadora = new javax.swing.JTextField();
+        jLEmail2 = new javax.swing.JLabel();
+        emailPerfilLocadora = new javax.swing.JTextField();
+        jLTelefonePerfil1 = new javax.swing.JLabel();
+        telefonePerfilLocadora = new javax.swing.JFormattedTextField();
+        jLSenha2 = new javax.swing.JLabel();
+        senhaPerfilLocadora = new javax.swing.JPasswordField();
+        excluirPerfil = new javax.swing.JButton();
+        atualizarPerfil = new javax.swing.JButton();
+        jLNome3 = new javax.swing.JLabel();
+        IdPerfilLocadora = new javax.swing.JLabel();
+        jPSobre = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMMeuPerfil = new javax.swing.JMenu();
         jMCadastrarVeiculo = new javax.swing.JMenu();
@@ -112,16 +108,366 @@ public class PrincipalLocadora extends javax.swing.JFrame {
 
         jPanelPrincipal.setLayout(new java.awt.CardLayout());
 
+        jCBVeiculo.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jCBVeiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o veículo", "Carro", "Motocicleta" }));
+
+        jLMarca.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jLMarca.setText("Marca");
+
+        jLCor.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jLCor.setText("Cor");
+
+        jLAno.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jLAno.setText("Ano");
+
+        jTFAno.setText("0");
+
+        jLCombustivel.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jLCombustivel.setText("Combustível");
+
+        jLPlaca.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jLPlaca.setText("Placa");
+
+        jTFPlaca.setNextFocusableComponent(cadastrar);
+
+        jCBMotor.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jCBMotor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "1.0", "1.4", "1.6", "1.8", "2.0", "a", "b", "c", "d", "e", "f" }));
+
+        jLMotor.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jLMotor.setText("Motor");
+
+        jLPreco.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jLPreco.setText("Preço p/ dia");
+
+        jTFPreco.setText("0");
+
+        cadastrar.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
+        cadastrar.setText("CADASTRAR");
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarActionPerformed(evt);
+            }
+        });
+
+        atualizar.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
+        atualizar.setText("ATUALIZAR");
+        atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarActionPerformed(evt);
+            }
+        });
+
+        excluir.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
+        excluir.setText("EXCLUIR");
+        excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirActionPerformed(evt);
+            }
+        });
+
+        jLModelo.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        jLModelo.setText("Modelo");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCBVeiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLCor)
+                            .addComponent(jLAno)
+                            .addComponent(jLPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLCombustivel)
+                            .addComponent(jLModelo)
+                            .addComponent(jLMarca)
+                            .addComponent(jLMotor)
+                            .addComponent(jLPlaca))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTFPlaca)
+                            .addComponent(jCBMotor, 0, 283, Short.MAX_VALUE)
+                            .addComponent(jTFMarca)
+                            .addComponent(jTFModelo)
+                            .addComponent(jTFCombustivel)
+                            .addComponent(jTFAno)
+                            .addComponent(jTFPreco)
+                            .addComponent(jTFCor))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cadastrar)
+                        .addGap(36, 36, 36)
+                        .addComponent(atualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(excluir)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jCBVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLMarca))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLModelo)
+                    .addComponent(jTFModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLPreco))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLAno)
+                    .addComponent(jTFAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCor)
+                    .addComponent(jTFCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFCombustivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLCombustivel))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCBMotor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLMotor))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLPlaca))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(excluir)
+                    .addComponent(atualizar)
+                    .addComponent(cadastrar))
+                .addContainerGap())
+        );
+
+        jLabel1.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        jLabel1.setText("Buscar por Marca");
+
+        jTFbuscarMarca.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        jTFbuscarMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarMarcaKeyPressed(evt);
+            }
+        });
+
+        buscarMarca.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        buscarMarca.setText("BUSCAR");
+        buscarMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarMarcaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        jLabel2.setText("Buscar por Modelo");
+
+        jTFbuscarModelo.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        jTFbuscarModelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarModeloKeyPressed(evt);
+            }
+        });
+
+        buscarModelo.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        buscarModelo.setText("BUSCAR");
+        buscarModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarModeloActionPerformed(evt);
+            }
+        });
+
+        buscarCarros.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        buscarCarros.setText("Ver somente carros");
+        buscarCarros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarCarrosActionPerformed(evt);
+            }
+        });
+
+        buscarMotocicletas.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        buscarMotocicletas.setText("Ver somente motocicletas");
+        buscarMotocicletas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarMotocicletasActionPerformed(evt);
+            }
+        });
+
+        bucarTodos.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        bucarTodos.setText("Ver todos os veículos");
+        bucarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bucarTodosActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        jLabel3.setText("Buscar por Ano");
+
+        jTFbuscarAno.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        jTFbuscarAno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarAnoKeyPressed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        jLabel5.setText("Buscar por Cor");
+
+        buscarAno.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        buscarAno.setText("BUSCAR");
+        buscarAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarAnoActionPerformed(evt);
+            }
+        });
+
+        jTFbuscarCor.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        jTFbuscarCor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFbuscarCorKeyPressed(evt);
+            }
+        });
+
+        buscarCor.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
+        buscarCor.setText("BUSCAR");
+        buscarCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarCorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(bucarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                        .addComponent(buscarMotocicletas, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFbuscarModelo)
+                            .addComponent(jTFbuscarMarca))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buscarModelo)
+                            .addComponent(buscarMarca))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3))))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFbuscarAno)
+                            .addComponent(jTFbuscarCor))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buscarCor, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buscarAno, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addComponent(buscarCarros, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bucarTodos)
+                    .addComponent(buscarMotocicletas)
+                    .addComponent(buscarCarros))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTFbuscarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarMarca)
+                    .addComponent(jLabel5)
+                    .addComponent(jTFbuscarCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarCor))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTFbuscarModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTFbuscarAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarModelo)
+                    .addComponent(buscarAno)))
+        );
+
+        jTable1.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Veículo", "Marca", "Modelo", "Preço", "Ano", "Cor", "Combustível", "Motor", "Placa"
+            }
+        ));
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPCadastrarLayout = new javax.swing.GroupLayout(jPCadastrar);
+        jPCadastrar.setLayout(jPCadastrarLayout);
+        jPCadastrarLayout.setHorizontalGroup(
+            jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCadastrarLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(684, Short.MAX_VALUE))
+        );
+        jPCadastrarLayout.setVerticalGroup(
+            jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCadastrarLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCadastrarLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 24, Short.MAX_VALUE))
+        );
+
+        jPanelPrincipal.add(jPCadastrar, "cadastrar");
+
         jLayeredPane4.setPreferredSize(new java.awt.Dimension(266, 253));
 
         jLNome2.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLNome2.setText("Nome");
-
-        nomePerfilLocadora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomePerfilLocadoraActionPerformed(evt);
-            }
-        });
 
         jLEmail2.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
         jLEmail2.setText("E-mail");
@@ -252,400 +598,37 @@ public class PrincipalLocadora extends javax.swing.JFrame {
 
         jPanelPrincipal.add(jPMeuPerfil, "meuPerfil");
 
-        jLabel4.setText("sobre");
+        jLabel4.setFont(new java.awt.Font("Noto Serif", 3, 24)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon.jpeg"))); // NOI18N
+        jLabel4.setText("AUTOVERHUUR");
+
+        jLabel6.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
+        jLabel6.setText("Nós somos a Autoverhuur. Esse nome vem do holandês e significa aluguel de veiculos.");
 
         javax.swing.GroupLayout jPSobreLayout = new javax.swing.GroupLayout(jPSobre);
         jPSobre.setLayout(jPSobreLayout);
         jPSobreLayout.setHorizontalGroup(
             jPSobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPSobreLayout.createSequentialGroup()
-                .addGap(224, 224, 224)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addContainerGap(1308, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPSobreLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel6)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         jPSobreLayout.setVerticalGroup(
             jPSobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPSobreLayout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(jLabel4)
-                .addContainerGap(472, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel6)
+                .addContainerGap(242, Short.MAX_VALUE))
         );
 
         jPanelPrincipal.add(jPSobre, "sobre");
-
-        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel1FocusLost(evt);
-            }
-        });
-
-        jCBVeiculo.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jCBVeiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o veículo", "Carro", "Motocicleta" }));
-        jCBVeiculo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jCBVeiculoFocusLost(evt);
-            }
-        });
-        jCBVeiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBVeiculoActionPerformed(evt);
-            }
-        });
-
-        jLMarca.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jLMarca.setText("Marca");
-
-        jLCor.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jLCor.setText("Cor");
-
-        jLAno.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jLAno.setText("Ano");
-
-        jTFAno.setText("0");
-
-        jLCombustivel.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jLCombustivel.setText("Combustível");
-
-        jLPlaca.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jLPlaca.setText("Placa");
-
-        jTFPlaca.setNextFocusableComponent(cadastrar);
-        jTFPlaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFPlacaActionPerformed(evt);
-            }
-        });
-
-        jCBMotor.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jCBMotor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "1.0", "1.4", "1.6", "1.8", "2.0", "a", "b", "c", "d", "e", "f" }));
-        jCBMotor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBMotorActionPerformed(evt);
-            }
-        });
-
-        jLMotor.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jLMotor.setText("Motor");
-
-        jLPreco.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jLPreco.setText("Preço p/ dia");
-
-        jTFPreco.setText("0");
-
-        cadastrar.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
-        cadastrar.setText("CADASTRAR");
-        cadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrarActionPerformed(evt);
-            }
-        });
-
-        atualizar.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
-        atualizar.setText("ATUALIZAR");
-        atualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atualizarActionPerformed(evt);
-            }
-        });
-
-        excluir.setFont(new java.awt.Font("Noto Sans", 3, 18)); // NOI18N
-        excluir.setText("EXCLUIR");
-        excluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirActionPerformed(evt);
-            }
-        });
-
-        jLModelo.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jLModelo.setText("Modelo");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCBVeiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cadastrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(atualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(excluir))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLCor)
-                                    .addComponent(jLAno)
-                                    .addComponent(jLPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLCombustivel)
-                                    .addComponent(jLModelo)
-                                    .addComponent(jLMarca)
-                                    .addComponent(jLMotor)
-                                    .addComponent(jLPlaca))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTFPlaca)
-                                    .addComponent(jCBMotor, 0, 283, Short.MAX_VALUE)
-                                    .addComponent(jTFMarca)
-                                    .addComponent(jTFModelo)
-                                    .addComponent(jTFCombustivel)
-                                    .addComponent(jTFAno)
-                                    .addComponent(jTFPreco)
-                                    .addComponent(jTFCor))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jCBVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLMarca))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLModelo)
-                    .addComponent(jTFModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLPreco))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLAno)
-                    .addComponent(jTFAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCor)
-                    .addComponent(jTFCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLCombustivel)
-                    .addComponent(jTFCombustivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCBMotor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLMotor))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLPlaca))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jTFPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cadastrar)
-                    .addComponent(atualizar)
-                    .addComponent(excluir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        jLabel1.setText("Buscar por Marca");
-
-        jTFbuscarMarca.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        jTFbuscarMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFbuscarMarcaActionPerformed(evt);
-            }
-        });
-
-        buscarMarca.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        buscarMarca.setText("BUSCAR");
-        buscarMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarMarcaActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        jLabel2.setText("Buscar por Modelo");
-
-        jTFbuscarModelo.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-
-        buscarModelo.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        buscarModelo.setText("BUSCAR");
-        buscarModelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarModeloActionPerformed(evt);
-            }
-        });
-
-        buscarCarros.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        buscarCarros.setText("Ver somente carros");
-        buscarCarros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarCarrosActionPerformed(evt);
-            }
-        });
-
-        buscarMotocicletas.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        buscarMotocicletas.setText("Ver somente motocicletas");
-        buscarMotocicletas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarMotocicletasActionPerformed(evt);
-            }
-        });
-
-        bucarTodos.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        bucarTodos.setText("Ver todos os veículos");
-        bucarTodos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bucarTodosActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        jLabel3.setText("Buscar por Ano");
-
-        jTFbuscarAno.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        jLabel5.setText("Buscar por Cor");
-
-        buscarAno.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        buscarAno.setText("BUSCAR");
-        buscarAno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarAnoActionPerformed(evt);
-            }
-        });
-
-        jTFbuscarCor.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-
-        buscarCor.setFont(new java.awt.Font("Noto Sans", 3, 16)); // NOI18N
-        buscarCor.setText("BUSCAR");
-        buscarCor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarCorActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(bucarTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                        .addComponent(buscarMotocicletas, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFbuscarModelo)
-                            .addComponent(jTFbuscarMarca))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buscarModelo)
-                            .addComponent(buscarMarca))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3))))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFbuscarAno)
-                            .addComponent(jTFbuscarCor))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buscarCor, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buscarAno, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                        .addComponent(buscarCarros, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bucarTodos)
-                    .addComponent(buscarMotocicletas)
-                    .addComponent(buscarCarros))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTFbuscarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarMarca)
-                    .addComponent(jLabel5)
-                    .addComponent(jTFbuscarCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarCor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTFbuscarModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTFbuscarAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarModelo)
-                    .addComponent(buscarAno))
-                .addContainerGap(172, Short.MAX_VALUE))
-        );
-
-        jTable1.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Veículo", "Marca", "Modelo", "Preço", "Ano", "Cor", "Combustível", "Motor", "Placa"
-            }
-        ));
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTable1KeyReleased(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPCadastrarLayout = new javax.swing.GroupLayout(jPCadastrar);
-        jPCadastrar.setLayout(jPCadastrarLayout);
-        jPCadastrarLayout.setHorizontalGroup(
-            jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCadastrarLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(684, Short.MAX_VALUE))
-        );
-        jPCadastrarLayout.setVerticalGroup(
-            jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCadastrarLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPCadastrarLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPCadastrarLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 12, Short.MAX_VALUE))))
-        );
-
-        jPanelPrincipal.add(jPCadastrar, "cadastrar");
 
         jMMeuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon25.png"))); // NOI18N
         jMMeuPerfil.setText("Meu perfil");
@@ -660,7 +643,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         });
         jMenuBar.add(jMMeuPerfil);
 
-        jMCadastrarVeiculo.setText("Cadastrar/Atualizar/Excluir Veículos");
+        jMCadastrarVeiculo.setText("Cadastrar/Atualizar/Pesquisar/Excluir Veículos");
         jMCadastrarVeiculo.setContentAreaFilled(false);
         jMCadastrarVeiculo.setFocusable(false);
         jMCadastrarVeiculo.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
@@ -744,12 +727,6 @@ public class PrincipalLocadora extends javax.swing.JFrame {
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         
-//        if(jTable1.getSelectedRow() != -1){
-//
-//            DefaultTableModel a = (DefaultTableModel) jTable1.getModel();
-//            a.removeRow(jTable1.getSelectedRow());
-//        }
-//        limpar();
         if (jTable1.getSelectedRow() != -1) {
 
             Veiculo v = new Veiculo();
@@ -783,7 +760,6 @@ public class PrincipalLocadora extends javax.swing.JFrame {
             jTFPlaca.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 9).toString());
             
         }
-
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
@@ -806,24 +782,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
             readJTable(id);
             limpar();
         }
-
     }//GEN-LAST:event_atualizarActionPerformed
-
-    private void jCBMotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMotorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBMotorActionPerformed
-
-    private void jCBVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBVeiculoActionPerformed
-
-    }//GEN-LAST:event_jCBVeiculoActionPerformed
-
-    private void jPanel1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusLost
-      
-    }//GEN-LAST:event_jPanel1FocusLost
-
-    private void jCBVeiculoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCBVeiculoFocusLost
-
-    }//GEN-LAST:event_jCBVeiculoFocusLost
 
     private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
         if (jTable1.getSelectedRow() != -1) {
@@ -842,7 +801,15 @@ public class PrincipalLocadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1KeyReleased
 
     private void excluirPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirPerfilActionPerformed
-        // TODO add your handling code here:
+        
+            LocadoraDAO dao = new LocadoraDAO();
+
+            int e = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja deletar a sua conta?");
+            
+            if(e == 0){
+               dao.delete(id);
+               this.dispose(); 
+            }
     }//GEN-LAST:event_excluirPerfilActionPerformed
 
     private void atualizarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarPerfilActionPerformed
@@ -865,7 +832,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarMarcaActionPerformed
 
     private void buscarModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarModeloActionPerformed
-        readJTableForModelo(jTFbuscarModelo.getText(),id);
+        readJTableForModelo(jTFbuscarModelo.getText(),id);    
     }//GEN-LAST:event_buscarModeloActionPerformed
 
     private void buscarCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCarrosActionPerformed
@@ -880,25 +847,37 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         readJTable(id);
     }//GEN-LAST:event_bucarTodosActionPerformed
 
-    private void nomePerfilLocadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomePerfilLocadoraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomePerfilLocadoraActionPerformed
-
-    private void jTFPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPlacaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFPlacaActionPerformed
-
     private void buscarAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarAnoActionPerformed
-         readJTableForAno(jTFbuscarAno.getText(),id);
+        readJTableForAno(jTFbuscarAno.getText(),id);
     }//GEN-LAST:event_buscarAnoActionPerformed
 
     private void buscarCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCorActionPerformed
         readJTableForCor(jTFbuscarCor.getText(),id);
     }//GEN-LAST:event_buscarCorActionPerformed
 
-    private void jTFbuscarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFbuscarMarcaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFbuscarMarcaActionPerformed
+    private void jTFbuscarMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarMarcaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            readJTableForMarca(jTFbuscarMarca.getText(),id);
+        }
+    }//GEN-LAST:event_jTFbuscarMarcaKeyPressed
+
+    private void jTFbuscarModeloKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarModeloKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            readJTableForModelo(jTFbuscarModelo.getText(),id);  
+        }
+    }//GEN-LAST:event_jTFbuscarModeloKeyPressed
+
+    private void jTFbuscarCorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarCorKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+             readJTableForCor(jTFbuscarCor.getText(),id); 
+        }
+    }//GEN-LAST:event_jTFbuscarCorKeyPressed
+
+    private void jTFbuscarAnoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFbuscarAnoKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+             readJTableForAno(jTFbuscarAno.getText(),id);
+        }
+    }//GEN-LAST:event_jTFbuscarAnoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -976,6 +955,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLayeredPane jLayeredPane4;
     private javax.swing.JMenu jMCadastrarVeiculo;
     private javax.swing.JMenu jMMeuPerfil;
@@ -1017,21 +997,17 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         jTFModelo.setText(null);
         jTFPreco.setText(null);
         jTFPlaca.setText(null);
+        
+    }
+    
+    public void limparPesquisa(){
+
+        jTFbuscarAno.setText(null);
+        jTFbuscarCor.setText(null);
+        jTFbuscarMarca.setText(null);
+        jTFbuscarModelo.setText(null);
 
     }
-      
-      public void testarPerfil(Locadora l){
-//          
-//          nome1.setText(l.getNome());
-//          senha1.setText(l.getSenha());
-//          telefone1.setText(l.getTelefone());
-//          email1.setText(l.getNome());
-//          cnpj1.setText(l.getCnpj());
-//          estado1.setText(l.getEndereco().getEstado());
-//          cidade1.setText(l.getEndereco().getCidade());
-//          bairro1.setText(l.getEndereco().getBairro());
-               
-      }
 
       public void readJTable(int cod){
           cod = id;
@@ -1055,31 +1031,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
                     v.getMotor(),
                     v.getPlaca()
                 });
-                  DefaultTableModel a = (DefaultTableModel) jTable1.getModel();
       }
-
-//    public void readJTableForDesc(String desc) {
-//        
-//        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-//        modelo.setNumRows(0);
-//        VeiculoDAO vdao = new VeiculoDAO();
-//
-//        vdao.readForDesc(desc).forEach((v) -> {
-//            modelo.addRow(new Object[]{
-//                v.getId(),
-//                v.getVeiculo(),
-//                v.getMarca(),
-//                v.getModelo(),
-//                v.getPrecoDia(),
-//                v.getAno(),
-//                v.getCor(),
-//                v.getCombustivel(),
-//                v.getMotor(),
-//                v.getPlaca()
-//            });
-//        });
-//
-//    }
     
     public void setPerfil(Locadora l){
            
@@ -1092,7 +1044,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
     }
     
      public void readJTableForMarca(String marca, int cod) {
-        
+        limparPesquisa();
          cod = id;
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
@@ -1116,7 +1068,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
     }
     
     public void readJTableForModelo(String modelo, int id) {
-        
+        limparPesquisa();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setNumRows(0);
         VeiculoDAO vdao = new VeiculoDAO();
@@ -1139,7 +1091,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
     }
     
     public void readJTableForAno(String ano, int id) {
-        
+        limparPesquisa();
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         VeiculoDAO vdao = new VeiculoDAO();
@@ -1162,7 +1114,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
     }
     
      public void readJTableForCor(String cor, int id) {
-        
+        limparPesquisa();
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         VeiculoDAO vdao = new VeiculoDAO();
@@ -1183,8 +1135,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         });
 
     }
-    
-    
+
      public void readJTableForCarros(int id) {
         
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
@@ -1228,7 +1179,5 @@ public class PrincipalLocadora extends javax.swing.JFrame {
                 v.getPlaca()
             });
         });
-
     }
-    
 }

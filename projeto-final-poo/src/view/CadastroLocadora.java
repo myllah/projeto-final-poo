@@ -196,7 +196,7 @@ public class CadastroLocadora extends javax.swing.JFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         
-       if(testar()){
+       if(cadastrar()){
             this.dispose();
         }
     
@@ -261,7 +261,7 @@ public class CadastroLocadora extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField telefone;
     // End of variables declaration//GEN-END:variables
    
-    public boolean testar(){
+    public boolean cadastrar(){
         
         Locadora l = new Locadora();
 
@@ -269,7 +269,6 @@ public class CadastroLocadora extends javax.swing.JFrame {
         l.setEmail(email.getText());
         l.setCnpj(cnpj.getText());
         l.setTelefone(telefone.getText());
-        
         l.setSenha( String.valueOf(senha.getPassword()));
 
         ValidaLocadora vl = new ValidaLocadora();

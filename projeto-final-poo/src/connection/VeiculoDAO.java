@@ -2,6 +2,7 @@
 package connection;
 
 import classes.Veiculo;
+import exception.InexistentException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,13 +38,69 @@ public class VeiculoDAO {
             
             stmt.executeUpdate();
                           
-            JOptionPane.showMessageDialog(null, "Salvo cm sucesso");
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar: "+ex);
        } finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
         
+    }
+    
+      public void update(Veiculo v) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE veiculo "
+                    + "SET veiculo_tipo = ?, marca = ? ,modelo = ? ,precoDia = ? ,ano = ?, "
+                    + "cor = ? ,combustivel = ? ,motor = ? ,placa = ? "
+                    + "WHERE id_veiculo = ?");
+            
+            stmt.setString(1, v.getVeiculo());
+            stmt.setString(2, v.getMarca());
+            stmt.setString(3, v.getModelo());
+            stmt.setDouble(4, v.getPrecoDia());
+            stmt.setInt(5, v.getAno());
+            stmt.setString(6, v.getCor());
+            stmt.setString(7, v.getCombustivel());
+            stmt.setString(8, v.getMotor());
+            stmt.setString(9, v.getPlaca());   
+            stmt.setInt(10, v.getId());
+            
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
+    }
+    public void delete(Veiculo v) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM veiculo WHERE id_veiculo = ?");
+            stmt.setInt(1, v.getId());
+
+            stmt.executeUpdate();
+
+            
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
     }
     
     public List<Veiculo> read() {
@@ -64,6 +121,7 @@ public class VeiculoDAO {
                 Veiculo veiculo = new Veiculo();
 
                 veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setId_locadora(rs.getInt("id_locadora"));
                 veiculo.setVeiculo(rs.getString("veiculo_tipo"));
                 veiculo.setMarca(rs.getString("marca"));
                 veiculo.setModelo(rs.getString("modelo"));
@@ -151,6 +209,7 @@ public class VeiculoDAO {
                 
                 veiculo.setMarca(rs.getString("marca"));
                 veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setId_locadora(rs.getInt("id_locadora"));
                 veiculo.setVeiculo(rs.getString("veiculo_tipo"));
                 veiculo.setModelo(rs.getString("modelo"));
                 veiculo.setPrecoDia(rs.getDouble("precoDia"));
@@ -161,6 +220,10 @@ public class VeiculoDAO {
                 veiculo.setPlaca(rs.getString("placa"));
                 
                 veiculos.add(veiculo);
+            }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
             }
 
         } catch (SQLException ex) {
@@ -206,6 +269,10 @@ public class VeiculoDAO {
                 
                 veiculos.add(veiculo);
             }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -216,8 +283,55 @@ public class VeiculoDAO {
         return veiculos;
 
     }
-    
-    public List<Veiculo> readForAno(String ano, int id) {
+    public List<Veiculo> readForAno(String ano) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE ano LIKE ? ");
+            stmt.setString(1, "%"+ano+"%");
+            
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Veiculo veiculo = new Veiculo();
+                
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setId_locadora(rs.getInt("id_locadora"));
+                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setPrecoDia(rs.getDouble("precoDia"));
+                veiculo.setAno(rs.getInt("ano"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getString("combustivel"));
+                veiculo.setMotor(rs.getString("motor"));
+                veiculo.setPlaca(rs.getString("placa"));
+                
+                veiculos.add(veiculo);
+            }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return veiculos;
+
+    }
+
+    public List<Veiculo> readForAno(String ano, int id){
 
         Connection con = ConnectionFactory.getConnection();
         
@@ -250,6 +364,10 @@ public class VeiculoDAO {
                 
                 veiculos.add(veiculo);
             }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -261,7 +379,54 @@ public class VeiculoDAO {
 
     }
     
-     public List<Veiculo> readForCor(String cor, int id) {
+     public List<Veiculo> readForCor(String cor) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE cor LIKE ? ");
+            stmt.setString(1, "%"+cor+"%");
+            
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Veiculo veiculo = new Veiculo();
+                
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setId_locadora(rs.getInt("id_locadora"));
+                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setPrecoDia(rs.getDouble("precoDia"));
+                veiculo.setAno(rs.getInt("ano"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getString("combustivel"));
+                veiculo.setMotor(rs.getString("motor"));
+                veiculo.setPlaca(rs.getString("placa"));
+                
+                veiculos.add(veiculo);
+            }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return veiculos;
+
+    }
+      public List<Veiculo> readForCor(String cor, int id) {
 
         Connection con = ConnectionFactory.getConnection();
         
@@ -294,6 +459,58 @@ public class VeiculoDAO {
                 
                 veiculos.add(veiculo);
             }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return veiculos;
+
+    }
+     
+     public List<Veiculo> readForIdVeiculo(int idVeiculo) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE id_veiculo LIKE ?");
+            stmt.setString(1, "%"+idVeiculo+"%");
+            
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Veiculo veiculo = new Veiculo();
+                
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setId_locadora(rs.getInt("id_locadora"));
+                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setPrecoDia(rs.getDouble("precoDia"));
+                veiculo.setAno(rs.getInt("ano"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getString("combustivel"));
+                veiculo.setMotor(rs.getString("motor"));
+                veiculo.setPlaca(rs.getString("placa"));
+                
+                veiculos.add(veiculo);
+            }
+
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -305,6 +522,54 @@ public class VeiculoDAO {
 
     }
     
+     public List<Veiculo> readForIdLocadora(int idLocadora) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Veiculo> veiculos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM veiculo WHERE id_locadora LIKE ?");
+            stmt.setString(1, "%"+idLocadora+"%");
+            
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Veiculo veiculo = new Veiculo();
+                
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId(rs.getInt("id_veiculo"));
+                veiculo.setId_locadora(rs.getInt("id_locadora"));
+                veiculo.setVeiculo(rs.getString("veiculo_tipo"));
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setPrecoDia(rs.getDouble("precoDia"));
+                veiculo.setAno(rs.getInt("ano"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getString("combustivel"));
+                veiculo.setMotor(rs.getString("motor"));
+                veiculo.setPlaca(rs.getString("placa"));
+                
+                veiculos.add(veiculo);
+            }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return veiculos;
+
+    }
+     
     public List<Veiculo> readForModelo(String modelo) {
 
         Connection con = ConnectionFactory.getConnection();
@@ -325,6 +590,7 @@ public class VeiculoDAO {
                 Veiculo veiculo = new Veiculo();
                 
                 veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setId_locadora(rs.getInt("id_locadora"));
                 veiculo.setMarca(rs.getString("marca"));
                 veiculo.setId(rs.getInt("id_veiculo"));
                 veiculo.setVeiculo(rs.getString("veiculo_tipo"));
@@ -336,6 +602,10 @@ public class VeiculoDAO {
                 veiculo.setPlaca(rs.getString("placa"));
                 
                 veiculos.add(veiculo);
+            }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
             }
 
         } catch (SQLException ex) {
@@ -380,6 +650,10 @@ public class VeiculoDAO {
                 
                 veiculos.add(veiculo);
             }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -388,62 +662,6 @@ public class VeiculoDAO {
         }
 
         return veiculos;
-
-    }
-
-    
-    public void update(Veiculo v) {
-
-        Connection con = ConnectionFactory.getConnection();
-        
-        PreparedStatement stmt = null;
-
-        try {
-            stmt = con.prepareStatement("UPDATE veiculo "
-                    + "SET veiculo_tipo = ?, marca = ? ,modelo = ? ,precoDia = ? ,ano = ?, "
-                    + "cor = ? ,combustivel = ? ,motor = ? ,placa = ? "
-                    + "WHERE id_veiculo = ?");
-            
-            stmt.setString(1, v.getVeiculo());
-            stmt.setString(2, v.getMarca());
-            stmt.setString(3, v.getModelo());
-            stmt.setDouble(4, v.getPrecoDia());
-            stmt.setInt(5, v.getAno());
-            stmt.setString(6, v.getCor());
-            stmt.setString(7, v.getCombustivel());
-            stmt.setString(8, v.getMotor());
-            stmt.setString(9, v.getPlaca());   
-            stmt.setInt(10, v.getId());
-            
-            stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-        }
-
-    }
-    public void delete(Veiculo v) {
-
-        Connection con = ConnectionFactory.getConnection();
-        
-        PreparedStatement stmt = null;
-
-        try {
-            stmt = con.prepareStatement("DELETE FROM veiculo WHERE id_veiculo = ?");
-            stmt.setInt(1, v.getId());
-
-            stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-        }
 
     }
     
@@ -466,6 +684,7 @@ public class VeiculoDAO {
                 Veiculo veiculo = new Veiculo();
                 
                 veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId_locadora(rs.getInt("id_locadora"));
                 veiculo.setId(rs.getInt("id_veiculo"));
                 veiculo.setVeiculo(rs.getString("veiculo_tipo"));
                 veiculo.setModelo(rs.getString("modelo"));
@@ -477,6 +696,10 @@ public class VeiculoDAO {
                 veiculo.setPlaca(rs.getString("placa"));
                 
                 veiculos.add(veiculo);
+            }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
             }
 
         } catch (SQLException ex) {
@@ -520,6 +743,10 @@ public class VeiculoDAO {
                 
                 veiculos.add(veiculo);
             }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -549,6 +776,7 @@ public class VeiculoDAO {
                 Veiculo veiculo = new Veiculo();
                 
                 veiculo.setMarca(rs.getString("marca"));
+                veiculo.setId_locadora(rs.getInt("id_locadora"));
                 veiculo.setId(rs.getInt("id_veiculo"));
                 veiculo.setVeiculo(rs.getString("veiculo_tipo"));
                 veiculo.setModelo(rs.getString("modelo"));
@@ -560,6 +788,10 @@ public class VeiculoDAO {
                 veiculo.setPlaca(rs.getString("placa"));
                 
                 veiculos.add(veiculo);
+            }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
             }
 
         } catch (SQLException ex) {
@@ -602,6 +834,10 @@ public class VeiculoDAO {
                 veiculo.setPlaca(rs.getString("placa"));
                 
                 veiculos.add(veiculo);
+            }
+            
+            if(veiculos.isEmpty()){
+                throw new InexistentException();
             }
 
         } catch (SQLException ex) {

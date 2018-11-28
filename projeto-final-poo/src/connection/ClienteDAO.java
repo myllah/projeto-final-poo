@@ -2,7 +2,6 @@
 package connection;
 
 import classes.Cliente;
-import classes.Veiculo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +26,7 @@ public class ClienteDAO {
             stmt.setString(5, c.getCpf());
             stmt.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Salvo cm sucesso");
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar: "+ex);
        } finally{
@@ -88,8 +87,6 @@ public class ClienteDAO {
 
             if (rs.next()) {
                 check = true;
-               
-      
             }
 
         } catch (SQLException ex) {
@@ -129,4 +126,35 @@ public class ClienteDAO {
         }
 
     }
+        public void delete(int id) {
+
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+
+        try {
+            JOptionPane.showMessageDialog(null, id);
+            stmt = con.prepareStatement("DELETE FROM cliente WHERE id_cliente = ?");
+            stmt.setInt(1, id);
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
+    }
+
 }
+
+// excluir conta tanto da locadora quanto do cliente
+// tabela locadora e campos para pesquisar locadora na principal cliente
+// mais campos de pesquisa de veiculos na principal cliente
+// mais campos de pesquisa de veiculos na principal locadora
+// tá aparecendo pra locadora só os veiculos que ela cadastrou 
+// tá aparecendo para o cliente todos os veiculos
+// fiz uma NegativeValueException para o cadastro de veiculos nos campos ano e preco
+//e fiz a inexistentException pra quando alguém pesquisar algo q n existe

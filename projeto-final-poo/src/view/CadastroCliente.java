@@ -75,7 +75,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLCpf.setText("CPF");
 
         try {
-            cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###.####-##")));
+            cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -191,7 +191,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         
-        if(testar()){
+        if(cadastrar()){
             this.dispose();
         }
     }//GEN-LAST:event_cadastrarActionPerformed
@@ -258,7 +258,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField telefone;
     // End of variables declaration//GEN-END:variables
    
-    public boolean testar(){
+    public boolean cadastrar(){
         
         Cliente c = new Cliente();
 
