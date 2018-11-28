@@ -1,12 +1,12 @@
 
 package view;
 
-import classes.Cliente;
-import classes.Veiculo;
-import classes.Locadora;
-import connection.ClienteDAO;
-import connection.LocadoraDAO;
-import connection.VeiculoDAO;
+import model.bean.Cliente;
+import model.bean.Veiculo;
+import model.bean.Locadora;
+import modelo.dao.ClienteDAO;
+import modelo.dao.LocadoraDAO;
+import modelo.dao.VeiculoDAO;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

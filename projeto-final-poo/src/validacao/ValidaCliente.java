@@ -1,7 +1,7 @@
 
 package validacao;
 
-import classes.Cliente;
+import model.bean.Cliente;
 import javax.swing.JOptionPane;
 
 public class ValidaCliente {

@@ -1,7 +1,7 @@
-import classes.Locadora;
-import classes.Veiculo;
-import connection.ClienteDAO;
-import connection.LocadoraDAO;
+import model.bean.Locadora;
+import model.bean.Veiculo;
+import modelo.dao.ClienteDAO;
+import modelo.dao.LocadoraDAO;
 import junit.framework.TestCase;
 import org.junit.Test;
 import validacao.ValidaLocadora;
@@ -123,7 +123,7 @@ public class JUnitTest extends TestCase{
      
      LocadoraDAO dao = new LocadoraDAO();
         
-    assertFalse(dao.checklogin(email, senha));
+    assertFalse(dao.checkLogin(email, senha));
     // locadora não existe
      
      }

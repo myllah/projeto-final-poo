@@ -1,8 +1,8 @@
 
 package view;
 
-import classes.Locadora;
-import connection.LocadoraDAO;
+import model.bean.Locadora;
+import modelo.dao.LocadoraDAO;
 import validacao.ValidaLocadora;
 
 public class CadastroLocadora extends javax.swing.JFrame {

@@ -1,7 +1,7 @@
 
 package validacao;
 
-import classes.Veiculo;
+import model.bean.Veiculo;
 import exception.NegativeValueException;
 import javax.swing.JOptionPane;
 

@@ -1,10 +1,10 @@
 
 package view;
 
-import classes.Cliente;
-import classes.Locadora;
-import connection.ClienteDAO;
-import connection.LocadoraDAO;
+import model.bean.Cliente;
+import model.bean.Locadora;
+import modelo.dao.ClienteDAO;
+import modelo.dao.LocadoraDAO;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import validacao.ValidaCliente;
@@ -683,7 +683,7 @@ public class Inicial extends javax.swing.JFrame {
         LocadoraDAO ldao = new LocadoraDAO();
         
         if(testarLocadora()){
-            if(ldao.checklogin(emailLocadora.getText(), senhaLocadora.getText())){
+            if(ldao.checkLogin(emailLocadora.getText(), senhaLocadora.getText())){
                  Locadora l = ldao.getLogin(emailLocadora.getText(), senhaLocadora.getText());
                 this.dispose();
                 new PrincipalLocadora(l).setVisible(true);

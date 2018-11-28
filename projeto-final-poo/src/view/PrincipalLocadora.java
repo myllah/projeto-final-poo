@@ -1,10 +1,10 @@
 
 package view;
 
-import classes.Veiculo;
-import classes.Locadora;
-import connection.LocadoraDAO;
-import connection.VeiculoDAO;
+import model.bean.Veiculo;
+import model.bean.Locadora;
+import modelo.dao.LocadoraDAO;
+import modelo.dao.VeiculoDAO;
 import java.awt.CardLayout;
 import java.util.Locale;
 import javax.swing.JOptionPane;

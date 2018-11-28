@@ -1,8 +1,8 @@
 
 package view;
 
-import classes.Cliente;
-import connection.ClienteDAO;
+import model.bean.Cliente;
+import modelo.dao.ClienteDAO;
 import validacao.ValidaCliente;
 
 

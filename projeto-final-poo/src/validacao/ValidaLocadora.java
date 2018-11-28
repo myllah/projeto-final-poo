@@ -1,7 +1,7 @@
 
 package validacao;
 
-import classes.Locadora;
+import model.bean.Locadora;
 import javax.swing.JOptionPane;
 
 public class ValidaLocadora {
