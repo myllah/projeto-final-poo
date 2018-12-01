@@ -1,0 +1,36 @@
+CREATE TABLE `cliente` (
+  `cpf` varchar(200) NOT NULL,
+  `id_cliente` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `telefone` varchar(45) DEFAULT NULL,
+  `senha` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_cliente`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `locadora` (
+  `cnpj` varchar(200) NOT NULL,
+  `id_locadora` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(200) NOT NULL,
+  `senha` varchar(200) NOT NULL,
+  `telefone` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_locadora`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `veiculo` (
+  `id_veiculo` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `marca` varchar(200) DEFAULT NULL,
+  `placa` varchar(200) DEFAULT NULL,
+  `modelo` varchar(200) DEFAULT NULL,
+  `ano` int(11) DEFAULT NULL,
+  `precoDia` double DEFAULT NULL,
+  `motor` varchar(200) DEFAULT NULL,
+  `combustivel` varchar(200) DEFAULT NULL,
+  `cor` varchar(200) DEFAULT NULL,
+  `id_locadora` int(11) unsigned NOT NULL DEFAULT '1',
+  `veiculo_tipo` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id_veiculo`),
+  KEY `fk_veiculo_locadora` (`id_locadora`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+

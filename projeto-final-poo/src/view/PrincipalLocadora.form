@@ -317,19 +317,18 @@
                       <Font name="Noto Sans" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="12">
+                      <StringArray count="11">
                         <StringItem index="0" value="Selecione"/>
                         <StringItem index="1" value="1.0"/>
                         <StringItem index="2" value="1.4"/>
                         <StringItem index="3" value="1.6"/>
                         <StringItem index="4" value="1.8"/>
                         <StringItem index="5" value="2.0"/>
-                        <StringItem index="6" value="a"/>
-                        <StringItem index="7" value="b"/>
-                        <StringItem index="8" value="c"/>
-                        <StringItem index="9" value="d"/>
-                        <StringItem index="10" value="e"/>
-                        <StringItem index="11" value="f"/>
+                        <StringItem index="6" value="125"/>
+                        <StringItem index="7" value="150"/>
+                        <StringItem index="8" value="200"/>
+                        <StringItem index="9" value="250"/>
+                        <StringItem index="10" value="300"/>
                       </StringArray>
                     </Property>
                   </Properties>

@@ -132,7 +132,7 @@ public class PrincipalLocadora extends javax.swing.JFrame {
         jTFPlaca.setNextFocusableComponent(cadastrar);
 
         jCBMotor.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
-        jCBMotor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "1.0", "1.4", "1.6", "1.8", "2.0", "a", "b", "c", "d", "e", "f" }));
+        jCBMotor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "1.0", "1.4", "1.6", "1.8", "2.0", "125", "150", "200", "250", "300" }));
 
         jLMotor.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
         jLMotor.setText("Motor");
